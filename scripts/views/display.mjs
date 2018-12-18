@@ -1,4 +1,5 @@
 import { elements } from "./base.mjs";
+import { add2gpArr } from "../models/calcGp.mjs";
 
 let numOfGpField = 0;
 
@@ -49,6 +50,12 @@ export const showCalcArea = () => {
   
 }
 
-const getUl = () => {
-  elements.gpCalcUl
-} 
+export const showSavePop = () => {
+  elements.savePopup.style.display = 'block';
+}
+
+export const saveGp = (gpName) => {
+  elements.savePopup.style.display = 'none';
+
+  return add2gpArr(gpName, elements.gpDisplay.innerHTML);
+}

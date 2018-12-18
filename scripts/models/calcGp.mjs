@@ -5,6 +5,7 @@ export const add2gpArr = (name, gpa) => {
     name,
     gpa
   });
+  return gpArr;
 }
 
 export const productCredUnitGrade = (credUnit, grade) => {
