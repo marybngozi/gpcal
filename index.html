@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="shortcut icon" href="./images/Logo.png" type="image/x-icon">
+    <title>GCal</title>
+</head>
+<body>
+    <header>
+        <nav>
+           <div id="menu-icon">
+               <button class="menu-icon"><img src="./images/menu.svg" alt="open menu" srcset=""></button>
+           </div> 
+        </nav>
+        <div id="gpa-display">
+            <p>Your GPA is</p>
+            <h1>0.00</h1>
+        </div>
+        <div id="gpa-title" style="display:none;">
+            <h3>My GPAs</h3>
+        </div>
+    </header>  
+    <main>
+        <section id="off-canvas">
+            <button id="close-menu" class="menu-icon"><img src="./images/menu.svg" alt="close-menu" srcset=""></button>
+            <div id="logo-part">
+                <img src="./images/Logo.svg" alt="">
+            </div>
+            <div id="menu-list-container">
+                <ul>
+                    <li><img src="./images/Group.svg" alt="my GPAs"><span class="span"> My GPAs</span></li>
+                    <li><img src="./images/question.svg" alt="about GCal"><span class="span"> About GCAL</span></li>
+                    <li id="not-available"><img src="./images/download.svg" alt="download GCal"><span> Download GCAL<sub>Pro</sub></span></li>
+                </ul>
+            </div>
+            <div id="off-canvas-footer">
+                <span>&copy;</span> Swisel Enterprise 2018
+            </div>
+        </section>
+        <!-- No gp yet -->
+        <section id="no-gp-yet">
+            <div>
+                <img src="./images/undraw_no_data_qbuo.svg" alt="" srcset="">
+                <p>You've not calculated any GP yet :-(</p>
+                <button id="showCalcArea">Calculate my GPA</button>
+            </div>
+            
+        </section>
+
+        <!-- INPUT AND CALCULATE GP AREA-->
+        <section id="calcArea">
+            <ul id="gpCalcUl"></ul>
+            <center><button id="saveGpBtn">Save my GPA</button></center>
+            <div class="addField-container">
+                <button id="addGpRow"><img src="./images/Group 7.svg" alt="add GP column" role="button"></button>
+            </div>
+            <div id="save-popup">
+                <div id="input-group">
+                    <input type="text" placeholder="Edit GP name">
+                    <img src="./images/fountain-pen-close-up.svg" alt="Edit GP name">
+                </div>
+                
+                <p>This GPA will be temporally saved</p>
+                <button>Save</button>
+            </div>
+        </section>
+
+        <!-- SHOW SAVED GPs -->
+        <section id="show-saved-gp">
+            <div id="search-container">
+                <img src="./images/Shape.svg" alt="Search">
+                <input type="text" placeholder="Search">
+            </div>
+            <div id="saved-gp">
+                <ul>
+                    <li>
+                        <span class="list-icon"><span class="list-num">1</span></span>
+                        <div>
+                            <span class="list-name">First Semester 200L</span>
+                            <select name="gp" id="gp">
+                                <option value="5">5.00</option>
+                                <option value="A">4.00</option>
+                                <option value="B">3.00</option>
+                                <option value="C">2.00</option>
+                            </select>
+                            <button>remove</button>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="list-icon"><span class="list-num">2</span></span>
+                        <div>
+                            <span class="list-name">First Semester 200L</span>
+                            <select name="gp" id="gp">
+                                <option value="5">5.00</option>
+                                <option value="A">4.00</option>
+                                <option value="B">3.00</option>
+                                <option value="C">2.00</option>
+                            </select>
+                            <button>remove</button>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="list-icon"><span class="list-num">3</span></span>
+                        <div>
+                            <span class="list-name">First Semester 200L</span>
+                            <select name="gp" id="gp">
+                                <option value="5">5.00</option>
+                                <option value="A">4.00</option>
+                                <option value="B">3.00</option>
+                                <option value="C">2.00</option>
+                            </select>
+                            <button>remove</button>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="list-icon"><span class="list-num">4</span></span>
+                        <div>
+                            <span class="list-name">First Semester 200L</span>
+                            <select name="gp" id="gp">
+                                <option value="5">5.00</option>
+                                <option value="A">4.00</option>
+                                <option value="B">3.00</option>
+                                <option value="C">2.00</option>
+                            </select>
+                            <button>remove</button>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="list-icon"><span class="list-num">5</span></span>
+                        <div>
+                            <span class="list-name">First Semester 200L</span>
+                            <select name="gp" id="gp">
+                                <option value="5">5.00</option>
+                                <option value="A">4.00</option>
+                                <option value="B">3.00</option>
+                                <option value="C">2.00</option>
+                            </select>
+                            <button>remove</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>  
+    <script src="./scripts/index.mjs" type="module"></script>
+</body>
+</html>

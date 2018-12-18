@@ -1,0 +1,328 @@
+@font-face {
+  font-family: raleway;
+  src: url('Raleway.woff2');
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+html{
+  height: auto;
+  font-size: 20px;
+  font-family: 'raleway';
+  color: #4f4f4f;
+}
+button{
+  background: #437f88;
+  padding: 2%;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+}
+.menu-icon{
+  width: 29px;
+  height: 29px;
+}
+input{
+  border: 0;
+  color: #437f88;
+  background: #FAFAFA;
+}
+input:focus, select:focus, button:focus{
+  outline: none;
+}
+header{
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-image: linear-gradient(rgba(73, 111, 124, 0.7), rgba(73, 111, 124, 0.7)), url('../images/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 240px;
+}
+header nav #menu-icon{
+  padding: 3%
+}
+header nav #menu-icon button {
+  background: transparent;
+  width: auto;
+}
+header #gpa-display, header #gpa-title{
+  margin-top: 5%;
+  text-align: center;
+  color: #fff;
+}
+.addField-container{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background: #4a6f7c;
+}
+.addField-container button{ 
+  position: relative;
+  left: 40%;
+  bottom: 40px;
+  cursor: pointer;
+  background: transparent;
+}
+/*=================== OFF CANVAS =====================*/
+#off-canvas{
+  width: 270px;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #437f88;
+  opacity: 0.95;
+  height: 100%;
+  z-index: 10;
+  -webkit-transform: translate(-270px, 0);
+  transform: translate(-270px, 0);
+  transition: transform 0.3s ease;
+}
+#off-canvas.open {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+  transition: transform 0.3s ease;
+}
+#off-canvas #close-menu{
+  position: absolute;
+  top: 3%;
+  right: 5%;
+  background: transparent;
+  width: auto;
+}
+#off-canvas #logo-part{
+  text-align: center;
+  margin-top: 15%;
+}
+#off-canvas #menu-list-container ul li{
+  padding: 3% 2%;
+  cursor: pointer;
+}
+#off-canvas #menu-list-container ul li#not-available{
+  color: #a7b8bf;
+}
+#off-canvas #menu-list-container ul li img{
+  margin-right: 2%;
+}
+#off-canvas #menu-list-container ul li .span::after{
+  display: block;
+  height: 2px;
+  background-color: #aaa;
+  content: "";
+  width: 78%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+#off-canvas #menu-list-container{
+  padding: 3%;
+}
+#off-canvas #off-canvas-footer{
+  padding: 4%;
+  position: absolute;
+  bottom: 0;
+  font-size: 80%;
+}
+#off-canvas #off-canvas-footer span{
+  color: rgb(114, 3, 3);
+}
+
+
+/*===================== SECTION NO GP YET ========================*/
+#no-gp-yet{
+  margin: 30px 0;
+}
+#no-gp-yet div{
+  text-align: center;
+}
+#no-gp-yet div img{
+  margin-bottom: 13px;
+}
+#no-gp-yet div p{
+  padding: 15px;
+}
+#no-gp-yet div button{
+  width: 80%;
+  padding: 3%;
+}
+
+
+/*====================CALC AREA ==============*/
+#calcArea {
+  display: none;
+  margin-top: 30px;
+}
+#calcArea ul li{
+  width: 98%;
+  height: 48px;
+  padding-left: 0;
+  margin-right: 0;
+  margin-bottom: 4%;
+  background: #FBFBFB;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 0px 4px 4px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+#calcArea ul li div{
+  padding: 3% 0;
+  display: flex;
+  justify-content: space-between;
+  
+}
+#calcArea ul li div input{
+  background: #FBFBFB;
+  margin-left: 5%;
+  text-align: center;
+  width: 25%;
+  border-bottom: 2px solid #437f88;
+}
+#calcArea ul li div select{
+  border: 0;
+  background: #FBFBFB;
+  color: #80a2ad;
+  font-size: 70%;
+}
+#calcArea ul li div button{
+  margin-right: 2%;
+  width: auto;
+  margin-top: 0;
+  background: #FAFAFA;
+  color: #437f88;
+  padding: 2%;
+  font-size: 70%;
+  color: rgb(114, 3, 3);
+}
+#calcArea ul li .list-icon{
+  background: url('../images/Union.svg');
+  background-repeat: no-repeat;
+  color: #fff;
+  text-align: center;
+  height: 50px;
+  width: 40px;
+}
+#calcArea ul li .list-icon .list-num{
+  position: relative;
+  top: 20%;
+  font-size: 90%;
+}
+#saveGpBtn{
+  width: 80%;
+  padding: 3%;
+  margin-top: 10px;
+  margin-bottom: 28%;
+}
+/************POPUP MODAL******/
+#save-popup{
+  display: none;
+  height: auto;
+  width: 69%;
+  background: #fff;
+  border: 1px solid #437f88;
+  position: absolute;
+  top: 50%;
+  left: 15%;;
+  z-index: 1000;
+  padding: 4%;
+  box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.32);
+  border-radius: 4px;
+}
+#save-popup #input-group {
+  margin-top: 12%;
+  border-bottom: 1px solid #437f88;
+}
+#save-popup p{
+  font-size: 65%;
+  padding: 5px;
+
+}
+#save-popup button{
+  background: #fff;
+  width: auto;
+  color: #4a6f7c;
+  position: relative;
+  left: 74%;
+  font-weight: bold;
+}
+
+/*============================= SHOW SAVED GPs ====================*/
+#show-saved-gp{
+  display: none;
+  margin-top: 10px;
+}
+#show-saved-gp #search-container{
+  padding: 4%;
+  width: 85%;
+  margin: 0 auto;
+  background: #FAFAFA;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+#show-saved-gp #search-container input{
+  font-size: 80%;
+}
+#show-saved-gp #search-container img{
+  display: inline-block;
+  
+}
+#show-saved-gp #saved-gp{
+  margin-top: 10px;
+
+}
+#show-saved-gp #saved-gp ul li{
+  width: 98%;
+  height: 48px;
+  padding-left: 0;
+  margin-right: 0;
+  margin-bottom: 4%;
+  background: #FBFBFB;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 0px 4px 4px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+#show-saved-gp #saved-gp ul li .list-icon{
+  background: url('../images/Union.svg');
+  background-repeat: no-repeat;
+  color: #fff;
+  text-align: center;
+  height: 50px;
+  width: 40px;
+}
+#show-saved-gp #saved-gp ul li .list-icon .list-num{
+  position: relative;
+  top: 20%;
+  font-size: 90%;
+}
+#show-saved-gp #saved-gp ul li div{
+  padding: 3% 0;
+  display: flex;
+  width: 93%;
+  justify-content: space-between;
+  
+}
+#show-saved-gp #saved-gp ul li div button{
+  margin-right: 2%;
+  width: auto;
+  background: #FAFAFA;
+  color: #437f88;
+  padding: 2%;
+  font-size: 70%;
+  color: rgb(114, 3, 3);
+}
+
+#show-saved-gp #saved-gp ul li div .list-name{
+  background: #FBFBFB;
+  margin-left: 5%;
+  padding: 2% 0;
+  font-size: 70%;
+}
+#show-saved-gp #saved-gp ul li div select{
+  border: 0;
+  background: #FBFBFB;
+  color: #80a2ad;
+  font-size: 70%;
+}
