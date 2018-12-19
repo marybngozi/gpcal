@@ -48,7 +48,7 @@ header nav #menu-icon button {
   background: transparent;
   width: auto;
 }
-header #gpa-display, header #gpa-title{
+header #gpa-display {
   margin-top: 5%;
   text-align: center;
   color: #fff;
@@ -158,36 +158,35 @@ header #gpa-display, header #gpa-title{
 #calcArea ul li{
   width: 98%;
   height: 48px;
-  padding-left: 0;
-  margin-right: 0;
+  margin: 0 1%;
   margin-bottom: 4%;
   background: #FBFBFB;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: -1px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 0px 4px 4px 0px;
   display: flex;
   justify-content: space-between;
+  padding: 2% 0;
 }
-#calcArea ul li div{
-  padding: 3% 0;
-  display: flex;
-  justify-content: space-between;
-  
-}
-#calcArea ul li div input{
+#calcArea ul li input{
   background: #FBFBFB;
-  margin-left: 5%;
   text-align: center;
   width: 25%;
   border-bottom: 2px solid #437f88;
 }
-#calcArea ul li div select{
+#calcArea ul li .courseCode{
+  margin-left: 1%;
+}
+#calcArea ul li .creditUnit{
+  width: 18%;
+}
+#calcArea ul li select{
   border: 0;
   background: #FBFBFB;
   color: #80a2ad;
   font-size: 70%;
 }
-#calcArea ul li div button{
-  margin-right: 2%;
+#calcArea ul li button{
+  margin-right: 1%;
   width: auto;
   margin-top: 0;
   background: #FAFAFA;
@@ -195,19 +194,6 @@ header #gpa-display, header #gpa-title{
   padding: 2%;
   font-size: 70%;
   color: rgb(114, 3, 3);
-}
-#calcArea ul li .list-icon{
-  background: url('../images/Union.svg');
-  background-repeat: no-repeat;
-  color: #fff;
-  text-align: center;
-  height: 50px;
-  width: 40px;
-}
-#calcArea ul li .list-icon .list-num{
-  position: relative;
-  top: 20%;
-  font-size: 90%;
 }
 #saveGpBtn{
   width: 80%;
@@ -226,7 +212,7 @@ header #gpa-display, header #gpa-title{
   top: 50%;
   left: 15%;;
   z-index: 1000;
-  padding: 4%;
+  padding: 1% 4% 4% 4%;
   box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.32);
   border-radius: 4px;
 }
@@ -246,6 +232,13 @@ header #gpa-display, header #gpa-title{
   position: relative;
   left: 74%;
   font-weight: bold;
+}
+#save-popup #close-pop{
+  font-size: 100%;
+  padding: 1%;
+  height: 36px;
+  width: 36px;
+  left: 89%;
 }
 
 /*============================= SHOW SAVED GPs ====================*/
@@ -276,35 +269,16 @@ header #gpa-display, header #gpa-title{
   width: 98%;
   height: 48px;
   padding-left: 0;
-  margin-right: 0;
+  margin: 0 1%;
   margin-bottom: 4%;
   background: #FBFBFB;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: -1px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 0px 4px 4px 0px;
   display: flex;
   justify-content: space-between;
+
 }
-#show-saved-gp #saved-gp ul li .list-icon{
-  background: url('../images/Union.svg');
-  background-repeat: no-repeat;
-  color: #fff;
-  text-align: center;
-  height: 50px;
-  width: 40px;
-}
-#show-saved-gp #saved-gp ul li .list-icon .list-num{
-  position: relative;
-  top: 20%;
-  font-size: 90%;
-}
-#show-saved-gp #saved-gp ul li div{
-  padding: 3% 0;
-  display: flex;
-  width: 93%;
-  justify-content: space-between;
-  
-}
-#show-saved-gp #saved-gp ul li div button{
+#show-saved-gp #saved-gp ul li button{
   margin-right: 2%;
   width: auto;
   background: #FAFAFA;
@@ -314,15 +288,13 @@ header #gpa-display, header #gpa-title{
   color: rgb(114, 3, 3);
 }
 
-#show-saved-gp #saved-gp ul li div .list-name{
-  background: #FBFBFB;
+#show-saved-gp #saved-gp ul li .gp-name{
+  width: 135px;
   margin-left: 5%;
-  padding: 2% 0;
+  padding-top: 4%;
   font-size: 70%;
 }
-#show-saved-gp #saved-gp ul li div select{
-  border: 0;
-  background: #FBFBFB;
-  color: #80a2ad;
+#show-saved-gp #saved-gp ul li .gpa{
+  padding-top: 4%;
   font-size: 70%;
 }

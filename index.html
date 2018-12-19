@@ -19,9 +19,6 @@
             <p>Your GPA is</p>
             <h1>0.00</h1>
         </div>
-        <div id="gpa-title" style="display:none;">
-            <h3>My GPAs</h3>
-        </div>
     </header>  
     <main>
         <section id="off-canvas">
@@ -31,7 +28,8 @@
             </div>
             <div id="menu-list-container">
                 <ul>
-                    <li><img src="./images/Group.svg" alt="my GPAs"><span class="span"> My GPAs</span></li>
+                    <li id="showSavedGpBtn"><img src="./images/Group.svg" alt="my GPAs"><span class="span"> My GPAs</span></li>
+                    <li id="showCalcArea"><img src="./images/Group.svg" alt="my GPAs"><span class="span"> Calculate GP</span></li>
                     <li><img src="./images/question.svg" alt="about GCal"><span class="span"> About GCAL</span></li>
                     <li id="not-available"><img src="./images/download.svg" alt="download GCal"><span> Download GCAL<sub>Pro</sub></span></li>
                 </ul>
@@ -45,19 +43,66 @@
             <div>
                 <img src="./images/undraw_no_data_qbuo.svg" alt="" srcset="">
                 <p>You've not calculated any GP yet :-(</p>
-                <button id="showCalcArea">Calculate my GPA</button>
+                <button id="showCalcAreaBtn">Calculate my GPA</button>
             </div>
             
         </section>
 
         <!-- INPUT AND CALCULATE GP AREA-->
         <section id="calcArea">
-            <ul id="gpCalcUl"></ul>
+            <ul id="gpCalcUl">
+                <li>
+                    <input type="text" placeholder="Course Code" class="courseCode">
+                    <input type="number" min="0" placeholder="Credit Unit" class="creditUnit">
+                    <select name="grade" class="grade">
+                      <option value="-1">Grade</option>
+                      <option value="5">A</option>
+                      <option value="4">B</option>
+                      <option value="3">C</option>
+                      <option value="2">D</option>
+                      <option value="1">E</option>
+                      <option value="0">F</option>
+                    </select>
+                    <button>remove</button>
+                    
+                </li>
+                <li>
+                    <input type="text" placeholder="Course Code" class="courseCode">
+                    <input type="number" min="0" placeholder="Credit Unit" class="creditUnit">
+                    <select name="grade" class="grade">
+                      <option value="-1">Grade</option>
+                      <option value="5">A</option>
+                      <option value="4">B</option>
+                      <option value="3">C</option>
+                      <option value="2">D</option>
+                      <option value="1">E</option>
+                      <option value="0">F</option>
+                    </select>
+                    <button>remove</button>
+                    
+                </li>
+                <li>
+                    <input type="text" placeholder="Course Code" class="courseCode">
+                    <input type="number" min="0" placeholder="Credit Unit" class="creditUnit">
+                    <select name="grade" class="grade">
+                      <option value="-1">Grade</option>
+                      <option value="5">A</option>
+                      <option value="4">B</option>
+                      <option value="3">C</option>
+                      <option value="2">D</option>
+                      <option value="1">E</option>
+                      <option value="0">F</option>
+                    </select>
+                    <button>remove</button>
+                    
+                </li>
+            </ul>
             <center><button id="saveGpBtn">Save my GPA</button></center>
             <div class="addField-container">
                 <button id="addGpRow"><img src="./images/Group 7.svg" alt="add GP column" role="button"></button>
             </div>
             <div id="save-popup">
+                <button id="close-pop">x</button>
                 <div id="input-group">
                     <input type="text" placeholder="Edit GP name" id="gpName" required>
                     <img src="./images/fountain-pen-close-up.svg" alt="Edit GP name">
@@ -75,73 +120,7 @@
                 <input type="text" placeholder="Search">
             </div>
             <div id="saved-gp">
-                <ul>
-                    <li>
-                        <span class="list-icon"><span class="list-num">1</span></span>
-                        <div>
-                            <span class="list-name">First Semester 200L</span>
-                            <select name="gp" id="gp">
-                                <option value="5">5.00</option>
-                                <option value="A">4.00</option>
-                                <option value="B">3.00</option>
-                                <option value="C">2.00</option>
-                            </select>
-                            <button>remove</button>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="list-icon"><span class="list-num">2</span></span>
-                        <div>
-                            <span class="list-name">First Semester 200L</span>
-                            <select name="gp" id="gp">
-                                <option value="5">5.00</option>
-                                <option value="A">4.00</option>
-                                <option value="B">3.00</option>
-                                <option value="C">2.00</option>
-                            </select>
-                            <button>remove</button>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="list-icon"><span class="list-num">3</span></span>
-                        <div>
-                            <span class="list-name">First Semester 200L</span>
-                            <select name="gp" id="gp">
-                                <option value="5">5.00</option>
-                                <option value="A">4.00</option>
-                                <option value="B">3.00</option>
-                                <option value="C">2.00</option>
-                            </select>
-                            <button>remove</button>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="list-icon"><span class="list-num">4</span></span>
-                        <div>
-                            <span class="list-name">First Semester 200L</span>
-                            <select name="gp" id="gp">
-                                <option value="5">5.00</option>
-                                <option value="A">4.00</option>
-                                <option value="B">3.00</option>
-                                <option value="C">2.00</option>
-                            </select>
-                            <button>remove</button>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="list-icon"><span class="list-num">5</span></span>
-                        <div>
-                            <span class="list-name">First Semester 200L</span>
-                            <select name="gp" id="gp">
-                                <option value="5">5.00</option>
-                                <option value="A">4.00</option>
-                                <option value="B">3.00</option>
-                                <option value="C">2.00</option>
-                            </select>
-                            <button>remove</button>
-                        </div>
-                    </li>
-                </ul>
+                <ul id="gpShowUl"></ul>
             </div>
         </section>
     </main>  
