@@ -46,6 +46,20 @@ export const removeGpa = (gpaId) => {
   saveGpStore();
 }
 
+export const updateGpa = (updateObj) => {
+  let gpIndex = getGpa().findIndex(gpa => updateObj.id === gpa.id);
+
+  if (updateObj.hasOwnProperty('results')) {
+    getGpa().splice(gpIndex, 1, updateObj);
+    saveGpStore();
+  }else{
+    let storeGpa = getGpa().splice(gpIndex, 1);
+    storeGpa.name = updateObj.name;
+    getGpa().splice(gpIndex, 0, storeGpa);
+    saveGpStore();
+  }
+}
+
 export const getGpa = () => gpArr; 
 
 export const add2gpArr = (gpObj) => {

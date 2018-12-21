@@ -1,5 +1,5 @@
 import { elements } from "./base.mjs";
-import { add2gpArr, getGpa, removeGpa } from "./calcGp.mjs";
+import { add2gpArr, getGpa, removeGpa, updateGpa } from "./calcGp.mjs";
 
 const addSavedGpField = (gpa) => {
   const showGpFieldHtml = `
@@ -17,8 +17,8 @@ const addSavedGpField = (gpa) => {
 const addEditGpField = (gpResult) => {
   const gpEditFieldHtml = `
   <li>
-    <input type="text" class="courseCode" value = "${gpResult.cCode}">
-    <input type="number" min="0" value = "${gpResult.cCredUnit}" class="creditUnit">
+    <input type="text" class="courseCode" value="${gpResult.cCode}">
+    <input type="number" min="0" value="${gpResult.cCredUnit}" class="creditUnit">
     <select name="grade" class="grade">
       <option value="${gpResult.grade}">${gpResult.grade}</option>
       <option value="A">A</option>
@@ -75,6 +75,10 @@ export const showCalcArea = () => {
 
 export const showSavePop = () => {
   elements.savePopup.style.display = 'block';
+  elements.gpNameInput.focus();
+  // get overlay for the back
+  // trap focus in the popup
+  // fix focus in input
 }
 
 export const saveGp = (gpObj) => {
@@ -119,13 +123,8 @@ export const showEditGp = (gpaId) => {
   let gpaInfo = getGpa().find(gpa => gpa.id === gpaId);
 
   if (gpaInfo) {
-    const gpDetailFieldHtml = `
-    <div>
-      <label>GPA Name: <input type="text" id"gpaName" value="${gpaInfo.name}"></label>
-      <input type="hidden" id="gpaId" value="${gpaInfo.id}">
-    </div>
-    `;
-    elements.gpEditUl.insertAdjacentHTML('beforeend', gpDetailFieldHtml);
+    elements.gpDisplayP.innerHTML = gpaInfo.name;
+    elements.gpDisplayInput.value = gpaInfo.id
     elements.gpDisplay.innerHTML = gpaInfo.gpa;
     if (gpaInfo.results.length > 0) {
       gpaInfo.results.forEach(gpResult => {
@@ -135,4 +134,18 @@ export const showEditGp = (gpaId) => {
   
   }
   
+}
+
+export const showUpdatePop = () => {
+  elements.updatePopup.style.display = "block";
+  elements.gpEditNameInput.value = elements.gpDisplayP.innerHTML;
+  elements.gpEditNameInput.focus();
+  //add the overlays
+}
+
+export const updateGp = (updateObj) => {
+  updateGpa(updateObj);
+  elements.updatePopup.style.display = "none";
+  showSavedGp();
+  elements.canvas.classList.toggle('open');
 }

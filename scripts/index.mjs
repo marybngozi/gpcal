@@ -1,4 +1,4 @@
-import { showCalcArea, addGpField, showSavePop, saveGp, removeGpaField, showSavedGp, searchGp, showEditGp, createGpField } from "./models/display.mjs";
+import { showCalcArea, addGpField, showSavePop, saveGp, removeGpaField, showSavedGp, searchGp, showEditGp, createGpField, showUpdatePop, updateGp } from "./models/display.mjs";
 import { elements } from './models/base.mjs';
 import { productCredUnitGrade } from "./models/calcGp.mjs";
 
@@ -70,6 +70,7 @@ elements.showCalcArea.addEventListener('click', () => {
   elements.canvas.classList.toggle('open');
   elements.gpDisplayP.innerHTML = "My Gp is"
   elements.gpDisplay.style.display = "block";
+  elements.gpDisplay.innerHTML = "0.00";
 })
 
 elements.addGpRowBtn.addEventListener('click', () => {
@@ -101,21 +102,21 @@ elements.gpCalcUl.addEventListener('click', (e) => { // deletes a removed gp
   }
 });
 
-elements.closePop.addEventListener('click', () => {
-  elements.savePopup.style.display = 'none';
-
+elements.closePop.forEach(btn => {
+  btn.addEventListener('click', () => {
+    elements.savePopup.style.display = 'none';
+    elements.updatePopup.style.display = 'none';
+  });
 });
 
 elements.showSaveGpPopBtn.addEventListener('click', () => {
   showSavePop();
-  // get overlay for the back
-  // trap focus in the popup
-  // fix focus in input
+
 });
 
 elements.saveGp.addEventListener('click', () => {
   let gpName = elements.gpNameInput.value.trim();
-  /*******undo these */
+  /*******undo these *//***get a function to do this so it can be reusable */
   // get overlay for the back
   // trap focus in the popup
   // fix focus in input
@@ -129,6 +130,7 @@ elements.saveGp.addEventListener('click', () => {
 });
 
 elements.showSavedGpBtn.addEventListener('click', () => { // shows the save popup
+  elements.gpNameInput.focus();
   showSavedGp();
   
 });
@@ -180,6 +182,31 @@ elements.addGpRowEdit.addEventListener('click', () => {
   })
 });
 
-elements.updateGpBtn.addEventListener('click', () => {
-  console.log("updating....")
-})
+elements.showUpdateGpPopBtn.addEventListener('click', () => {
+  showUpdatePop();
+
+});
+
+elements.updateGp.addEventListener('click', () => {
+  let gpEditName = elements.gpEditNameInput.value.trim();
+  if (gpEditName !== "" && gpResultsEdit.length > 0) {
+    let results = gpResultsEdit[gpResultsEdit.length - 1];
+    /*******undo these *//***get a function to do this so it can be reusable */
+    // get overlay for the back
+    // trap focus in the popup
+    // fix focus in input
+    updateGp({
+      id: elements.gpDisplayInput.value,
+      name: gpEditName,
+      gpa: elements.gpDisplay.innerHTML,
+      results: results
+    });
+  
+  }else{
+    updateGp({
+      id: elements.gpDisplayInput.value,
+      name: gpEditName,
+      gpa: elements.gpDisplay.innerHTML
+    });
+  }
+});

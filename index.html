@@ -16,6 +16,7 @@
            </div> 
         </nav>
         <div id="gpa-display">
+            <input type="hidden" id="gpaId">
             <p>My GPA is</p>
             <h1>0.00</h1>
         </div>
@@ -102,7 +103,7 @@
                 <button id="addGpRow"><img src="./images/Group 7.svg" alt="add GP column"></button>
             </div>
             <div id="save-popup">
-                <button id="close-pop">x</button>
+                <button class="close-pop">x</button>
                 <div id="input-group">
                     <input type="text" placeholder="Edit GP name" id="gpName" required>
                     <img src="./images/fountain-pen-close-up.svg" alt="Edit GP name">
@@ -130,6 +131,16 @@
             <center><button id="updateGpBtn">Update my GPA</button></center>
             <div class="addField-container">
                 <button id="addGpRowEdit"><img src="./images/Group 7.svg" alt="add GP column"></button>
+            </div>
+            <div id="update-popup">
+                <button class="close-pop">x</button>
+                <div id="input-group">
+                    <input type="text" placeholder="Edit GP name" id="gpEditName" required>
+                    <img src="./images/fountain-pen-close-up.svg" alt="Edit GP name">
+                </div>
+                
+                <p>This GPA is temporally saved</p>
+                <button id="update-btn">Update</button>
             </div>
         </section>
     </main>  

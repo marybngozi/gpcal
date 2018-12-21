@@ -200,8 +200,8 @@ header #gpa-display {
   margin-top: 10px;
   margin-bottom: 28%;
 }
-/************POPUP MODAL******/
-#save-popup{
+/************POPUP MODAL FOR SAVE & UPDATE******/
+#save-popup, #update-popup{
   display: none;
   height: auto;
   width: 69%;
@@ -215,16 +215,16 @@ header #gpa-display {
   box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.32);
   border-radius: 4px;
 }
-#save-popup #input-group {
+#save-popup #input-group, #update-popup #input-group {
   margin-top: 12%;
   border-bottom: 1px solid #437f88;
 }
-#save-popup p{
+#save-popup p, #update-popup p{
   font-size: 65%;
   padding: 5px;
 
 }
-#save-popup button{
+#save-popup button, #update-popup button{
   background: #fff;
   width: auto;
   color: #4a6f7c;
@@ -232,7 +232,7 @@ header #gpa-display {
   left: 74%;
   font-weight: bold;
 }
-#save-popup #close-pop{
+#save-popup .close-pop, #update-popup .close-pop{
   font-size: 100%;
   padding: 1%;
   height: 36px;
