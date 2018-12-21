@@ -40,7 +40,7 @@ const editCalcRenderGp = (lists) => {
     let eachCUVal = Number(list.querySelector('.creditUnit').value);
     let eachCCVal = list.querySelector('.courseCode').value;
     let eachSelectVal = list.querySelector('select').value;
-    if (eachCUVal !== "" && eachSelectVal !== "" && eachSelectVal !== "-1" && eachSelectVal !== -1) {
+    if (eachCUVal !== "" && eachSelectVal !== "" && eachSelectVal !== "-1") {
       creditSumEdit += eachCUVal;
       sumEdit += productCredUnitGrade(eachCUVal, eachSelectVal);
       gpEditTempArr.push({
@@ -85,7 +85,7 @@ elements.addGpRowBtn.addEventListener('click', () => {
 
 ['input', 'change'].forEach(evt => {
   elements.gpCalcUl.addEventListener(evt, (e) => {
-    if (e.target.matches('.creditUnit') || e.target.matches('select')) {
+    if (e.target.matches('.creditUnit') || e.target.matches('.courseCode') || e.target.matches('select')) {
       const li = e.target.parentNode.parentNode.querySelectorAll('li');
       calcRenderGp(li);
     }
@@ -94,7 +94,6 @@ elements.addGpRowBtn.addEventListener('click', () => {
 
 elements.gpCalcUl.addEventListener('click', (e) => { // deletes a removed gp
   if (e.target.matches('button')) {
-    removeGpaField();
     let child = e.target.parentNode;
     let parent = e.target.parentNode.parentNode;
     parent.removeChild(child);
@@ -157,7 +156,7 @@ elements.gpShowUl.addEventListener('click', (e) => { // edits a saved gp
 
 ['input', 'change'].forEach(evt => {
   elements.gpEditUl.addEventListener(evt, (e) => {
-    if (e.target.matches('.creditUnit') || e.target.matches('select')) {
+    if (e.target.matches('.creditUnit') || e.target.matches('.courseCode') || e.target.matches('select')) {
       const li = e.target.parentNode.parentNode.querySelectorAll('li');
       editCalcRenderGp(li);
     }

@@ -44,7 +44,7 @@ export const removeGpa = (gpaId) => {
   let gpId = gpArr.findIndex(gpa => gpa.id === gpaId)
   gpArr.splice(gpId, 1);
   saveGpStore();
-}
+} 
 
 export const updateGpa = (updateObj) => {
   let gpIndex = getGpa().findIndex(gpa => updateObj.id === gpa.id);
@@ -54,8 +54,8 @@ export const updateGpa = (updateObj) => {
     saveGpStore();
   }else{
     let storeGpa = getGpa().splice(gpIndex, 1);
-    storeGpa.name = updateObj.name;
-    getGpa().splice(gpIndex, 0, storeGpa);
+    storeGpa[0].name = updateObj.name;
+    getGpa().splice(gpIndex, 0, storeGpa[0]);
     saveGpStore();
   }
 }
