@@ -62,8 +62,8 @@ header #gpa-display {
 }
 .addField-container button{ 
   position: relative;
-  left: 40%;
-  bottom: 40px;
+  left: 39%;
+  bottom: 38px;
   cursor: pointer;
   background: transparent;
 }
@@ -190,12 +190,11 @@ header #gpa-display {
   width: auto;
   margin-top: 0;
   background: #FAFAFA;
-  color: #437f88;
   padding: 2%;
   font-size: 70%;
   color: rgb(114, 3, 3);
 }
-#saveGpBtn{
+#saveGpBtn, #updateGpBtn{
   width: 80%;
   padding: 3%;
   margin-top: 10px;
@@ -247,6 +246,9 @@ header #gpa-display {
   margin-top: 10px;
 }
 #show-saved-gp #search-container{
+  position: fixed;
+  top: 260px;
+  left: 3%;
   padding: 4%;
   width: 85%;
   margin: 0 auto;
@@ -262,7 +264,7 @@ header #gpa-display {
   
 }
 #show-saved-gp #saved-gp{
-  margin-top: 10px;
+  margin-top: 90px;
 
 }
 #show-saved-gp #saved-gp ul li{
@@ -278,23 +280,85 @@ header #gpa-display {
   justify-content: space-between;
 
 }
-#show-saved-gp #saved-gp ul li button{
+#show-saved-gp #saved-gp ul li .edit-gpa{
+  width: auto;
+  background: #FAFAFA;
+  padding: 2%;
+  font-weight: bold;
+  font-size: 70%;
+  color: #2d7783;
+}
+#show-saved-gp #saved-gp ul li .remove-gpa{
   margin-right: 2%;
   width: auto;
   background: #FAFAFA;
-  color: #437f88;
   padding: 2%;
   font-size: 70%;
   color: rgb(114, 3, 3);
 }
-
 #show-saved-gp #saved-gp ul li .gp-name{
-  width: 135px;
+  width: 127px;
   margin-left: 5%;
   padding-top: 4%;
   font-size: 70%;
+  overflow-y: scroll;
 }
 #show-saved-gp #saved-gp ul li .gpa{
   padding-top: 4%;
   font-size: 70%;
+}
+
+/*============================= EDIT SAVED GPs ====================*/
+#editArea{
+  display: none;
+  margin-top: 10px;
+}
+#editArea ul li, #editArea ul div{
+  width: 98%;
+  height: 48px;
+  padding-left: 0;
+  margin: 0 1%;
+  margin-bottom: 4%;
+  background: #FBFBFB;
+  box-shadow: -1px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 0px 4px 4px 0px;
+  display: flex;
+  justify-content: space-between;
+
+}
+#editArea ul div label {
+  margin-top: 7px;
+  padding: 2%;
+  font-size: 70%;
+  color: #437f88;
+}
+#editArea ul li input, #editArea ul div label input{
+  background: #FBFBFB;
+  text-align: center;
+  width: 25%;
+  border-bottom: 2px solid #437f88;
+}
+#editArea ul div label input{
+  width: 60%;
+}
+#editArea ul li .courseCode{
+  margin-left: 1%;
+}
+#editArea ul li .creditUnit{
+  width: 18%;
+}
+#editArea ul li select{
+  border: 0;
+  background: #FBFBFB;
+  color: #80a2ad;
+  font-size: 70%;
+}
+#editArea ul li button{
+  margin-right: 1%;
+  width: auto;
+  margin-top: 0;
+  background: #FAFAFA;
+  padding: 2%;
+  font-size: 70%;
+  color: rgb(114, 3, 3);
 }

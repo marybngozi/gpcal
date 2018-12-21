@@ -16,5 +16,10 @@ export const elements = {
   showSavedGpBtn: document.querySelector('#showSavedGpBtn'),
   gpShowUl: document.querySelector('#gpShowUl'),
   showCalcAreaBtn: document.querySelector('#showCalcAreaBtn'),
-  closePop: document.querySelector('#close-pop')
+  closePop: document.querySelector('#close-pop'),
+  searchInput: document.querySelector('#search'),
+  editArea: document.querySelector('#editArea'),
+  gpEditUl: document.querySelector('#gpEditUl'),
+  addGpRowEdit: document.querySelector('#addGpRowEdit'),
+  updateGpBtn: document.querySelector('#updateGpBtn')
 }

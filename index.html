@@ -16,7 +16,7 @@
            </div> 
         </nav>
         <div id="gpa-display">
-            <p>Your GPA is</p>
+            <p>My GPA is</p>
             <h1>0.00</h1>
         </div>
     </header>  
@@ -56,12 +56,12 @@
                     <input type="number" min="0" placeholder="Credit Unit" class="creditUnit">
                     <select name="grade" class="grade">
                       <option value="-1">Grade</option>
-                      <option value="5">A</option>
-                      <option value="4">B</option>
-                      <option value="3">C</option>
-                      <option value="2">D</option>
-                      <option value="1">E</option>
-                      <option value="0">F</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
                     </select>
                     <button>remove</button>
                     
@@ -71,12 +71,12 @@
                     <input type="number" min="0" placeholder="Credit Unit" class="creditUnit">
                     <select name="grade" class="grade">
                       <option value="-1">Grade</option>
-                      <option value="5">A</option>
-                      <option value="4">B</option>
-                      <option value="3">C</option>
-                      <option value="2">D</option>
-                      <option value="1">E</option>
-                      <option value="0">F</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
                     </select>
                     <button>remove</button>
                     
@@ -86,12 +86,12 @@
                     <input type="number" min="0" placeholder="Credit Unit" class="creditUnit">
                     <select name="grade" class="grade">
                       <option value="-1">Grade</option>
-                      <option value="5">A</option>
-                      <option value="4">B</option>
-                      <option value="3">C</option>
-                      <option value="2">D</option>
-                      <option value="1">E</option>
-                      <option value="0">F</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
                     </select>
                     <button>remove</button>
                     
@@ -99,7 +99,7 @@
             </ul>
             <center><button id="saveGpBtn">Save my GPA</button></center>
             <div class="addField-container">
-                <button id="addGpRow"><img src="./images/Group 7.svg" alt="add GP column" role="button"></button>
+                <button id="addGpRow"><img src="./images/Group 7.svg" alt="add GP column"></button>
             </div>
             <div id="save-popup">
                 <button id="close-pop">x</button>
@@ -117,13 +117,23 @@
         <section id="show-saved-gp">
             <div id="search-container">
                 <img src="./images/Shape.svg" alt="Search">
-                <input type="text" placeholder="Search">
+                <input type="text" placeholder="Search" id="search">
             </div>
             <div id="saved-gp">
                 <ul id="gpShowUl"></ul>
             </div>
         </section>
+
+        <!-- EDIT AND CALCULATE GP AREA-->
+        <section id="editArea">
+            <ul id="gpEditUl"></ul>
+            <center><button id="updateGpBtn">Update my GPA</button></center>
+            <div class="addField-container">
+                <button id="addGpRowEdit"><img src="./images/Group 7.svg" alt="add GP column"></button>
+            </div>
+        </section>
     </main>  
     <script src="./scripts/index.mjs" type="module"></script>
+    <script src="./scripts/models/uuid.js"></script>
 </body>
 </html>
