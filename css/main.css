@@ -235,9 +235,6 @@ header #gpa-display {
   padding: 5px;
 
 }
-elements.gpDisplayP.innerHTML = "My Gp is"
-elements.gpDisplay.style.display = "block";
-elements.gpDisplay.innerHTML = "0.00";
 #save-popup .ip_btn, #update-popup .ip_btn{
   background: #fff;
   width: auto;
