@@ -17,11 +17,13 @@
         </nav>
         <div id="gpa-display">
             <input type="hidden" id="gpaId">
-            <p>My GPA is</p>
-            <h1>0.00</h1>
+            <input type="hidden" id="gpaMode" value="university">
+            <p><img src="./images/Logo.svg" width="50" height="50"></p>
+            <h1>GCal</h1>
         </div>
     </header>  
     <main>
+        <!-- OFF CANVAS SECTION -->
         <section id="off-canvas">
             <button id="close-menu" class="menu-icon"><img src="./images/menu.svg" alt="close-menu" srcset=""></button>
             <div id="logo-part">
@@ -39,12 +41,16 @@
                 <span>&copy;</span> Swisel Enterprise 2018
             </div>
         </section>
-        <!-- No gp yet -->
+
+        <!-- FRONT PAGE SECTION -->
         <section id="no-gp-yet">
             <div>
                 <img src="./images/undraw_no_data_qbuo.svg" alt="" srcset="">
-                <p>You've not calculated any GP yet :-(</p>
+                <p id="frontP">You've not calculated any GP yet :-(</p>
                 <button id="showCalcAreaBtn">Calculate my GPA</button>
+            </div>
+            <div class="addField-container">
+
             </div>
             
         </section>
@@ -102,7 +108,7 @@
             <div class="addField-container">
                 <button id="addGpRow"><img src="./images/Group 7.svg" alt="add GP column"></button>
             </div>
-            <div id="save-popup">
+            <form id="save-popup">
                 <button class="close-pop">x</button>
                 <div id="input-group">
                     <input type="text" placeholder="Edit GP name" id="gpName" required>
@@ -110,8 +116,8 @@
                 </div>
                 
                 <p>This GPA will be temporally saved</p>
-                <button id="save-btn">Save</button>
-            </div>
+                <input type="submit" class="ip_btn" id="save-btn" value="Save">
+            </form>
         </section>
 
         <!-- SHOW SAVED GPs -->
@@ -123,6 +129,9 @@
             <div id="saved-gp">
                 <ul id="gpShowUl"></ul>
             </div>
+            <div class="addField-container">
+                
+            </div>
         </section>
 
         <!-- EDIT AND CALCULATE GP AREA-->
@@ -132,7 +141,7 @@
             <div class="addField-container">
                 <button id="addGpRowEdit"><img src="./images/Group 7.svg" alt="add GP column"></button>
             </div>
-            <div id="update-popup">
+            <form id="update-popup">
                 <button class="close-pop">x</button>
                 <div id="input-group">
                     <input type="text" placeholder="Edit GP name" id="gpEditName" required>
@@ -140,8 +149,7 @@
                 </div>
                 
                 <p>This GPA is temporally saved</p>
-                <button id="update-btn">Update</button>
-            </div>
+                <input type="submit" class="ip_btn" id="update-btn" value="Update">            </form>
         </section>
     </main>  
     <script src="./scripts/index.mjs" type="module"></script>

@@ -70,7 +70,9 @@ export const showCalcArea = () => {
   elements.calcArea.style.display = 'block';
   elements.showSavedGp.style.display = 'none';
   elements.editArea.style.display = 'none';
-
+  elements.gpDisplayP.innerHTML = "My Gp is"
+  elements.gpDisplay.style.display = "block";
+  elements.gpDisplay.innerHTML = "0.00";
 }
 
 export const showSavePop = () => {

@@ -1,6 +1,16 @@
 import { showCalcArea, addGpField, showSavePop, saveGp, removeGpaField, showSavedGp, searchGp, showEditGp, createGpField, showUpdatePop, updateGp } from "./models/display.mjs";
 import { elements } from './models/base.mjs';
-import { productCredUnitGrade } from "./models/calcGp.mjs";
+import { productCredUnitGrade, getGpa } from "./models/calcGp.mjs";
+
+if(getGpa().length > 0) {
+  elements.noGpViewP.innerHTML = "Some GPAs Calculated :-)"
+  elements.showCalcAreaBtn.innerHTML = "Calculate more GPAs"
+}
+
+const footerP = `
+  <p>&copy; Swisel ${new Date().getFullYear()}</p>
+`;
+elements.footerDiv.forEach(footDiv => {footDiv.insertAdjacentHTML('beforeend', footerP)});
 
 const gpResults = [];
 const gpResultsEdit = [];
@@ -56,6 +66,55 @@ const editCalcRenderGp = (lists) => {
   gpResultsEdit.push(gpEditTempArr);
 }
 
+const popSaver = (e) => {
+  e.preventDefault();
+  let gpName = elements.gpNameInput.value.trim();
+  let gpa = elements.gpDisplay.innerHTML;
+  /*******undo these *//***get a function to do this so it can be reusable */
+  // get overlay for the back
+  // trap focus in the popup
+  // fix focus in input
+  if(gpName !== "" && gpName.length !== 0){
+    if (elements.gpDisplay.innerHTML !== "0.00") {
+      saveGp({
+        name: gpName,
+        gpa,
+        results: gpResults[gpResults.length - 1]
+      });
+    }else{
+      elements.savePopupP.innerHTML = "GPA is 0.00";
+    }
+  }else{
+    elements.savePopupP.innerHTML = "Name Field can't be empty!";
+    elements.gpNameInput.focus();
+  }
+}
+
+const popUpdater = (e) => {
+  e.preventDefault();
+  let gpEditName = elements.gpEditNameInput.value.trim();
+  if (gpEditName !== "" && gpResultsEdit.length > 0) {
+    let results = gpResultsEdit[gpResultsEdit.length - 1];
+    /*******undo these *//***get a function to do this so it can be reusable */
+    // get overlay for the back
+    // trap focus in the popup
+    // fix focus in input
+    updateGp({
+      id: elements.gpDisplayInput.value,
+      name: gpEditName,
+      gpa: elements.gpDisplay.innerHTML,
+      results: results
+    });
+  
+  }else{
+    updateGp({
+      id: elements.gpDisplayInput.value,
+      name: gpEditName,
+      gpa: elements.gpDisplay.innerHTML
+    });
+  }
+}
+
 elements.menu.forEach(icon => {
   icon.addEventListener('click', (e) => {
     elements.canvas.classList.toggle('open');
@@ -68,9 +127,6 @@ elements.showCalcAreaBtn.addEventListener('click', showCalcArea)
 elements.showCalcArea.addEventListener('click', () => {
   showCalcArea();
   elements.canvas.classList.toggle('open');
-  elements.gpDisplayP.innerHTML = "My Gp is"
-  elements.gpDisplay.style.display = "block";
-  elements.gpDisplay.innerHTML = "0.00";
 })
 
 elements.addGpRowBtn.addEventListener('click', () => {
@@ -102,7 +158,8 @@ elements.gpCalcUl.addEventListener('click', (e) => { // deletes a removed gp
 });
 
 elements.closePop.forEach(btn => {
-  btn.addEventListener('click', () => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
     elements.savePopup.style.display = 'none';
     elements.updatePopup.style.display = 'none';
   });
@@ -113,20 +170,13 @@ elements.showSaveGpPopBtn.addEventListener('click', () => {
 
 });
 
-elements.saveGp.addEventListener('click', () => {
-  let gpName = elements.gpNameInput.value.trim();
-  /*******undo these *//***get a function to do this so it can be reusable */
-  // get overlay for the back
-  // trap focus in the popup
-  // fix focus in input
-  if(gpName !== "" || gpName.length !== 0){
-    saveGp({
-      name: gpName,
-      gpa: elements.gpDisplay.innerHTML,
-      results: gpResults[gpResults.length - 1]
-    });
+elements.gpNameInput.addEventListener('keypress', (e) => {
+  if (e.charCode === 13) {
+    popSaver(e);
   }
 });
+
+elements.saveGp.addEventListener('click', popSaver);
 
 elements.showSavedGpBtn.addEventListener('click', () => { // shows the save popup
   elements.gpNameInput.focus();
@@ -135,7 +185,8 @@ elements.showSavedGpBtn.addEventListener('click', () => { // shows the save popu
 });
 
 elements.searchInput.addEventListener('input', (e) => {
-  searchGp(e.target.value);
+  let searchText = e.target.value.trim();
+  searchGp(searchText);
 });
 
 elements.gpShowUl.addEventListener('click', (e) => { // deletes a removed gp
@@ -186,26 +237,10 @@ elements.showUpdateGpPopBtn.addEventListener('click', () => {
 
 });
 
-elements.updateGp.addEventListener('click', () => {
-  let gpEditName = elements.gpEditNameInput.value.trim();
-  if (gpEditName !== "" && gpResultsEdit.length > 0) {
-    let results = gpResultsEdit[gpResultsEdit.length - 1];
-    /*******undo these *//***get a function to do this so it can be reusable */
-    // get overlay for the back
-    // trap focus in the popup
-    // fix focus in input
-    updateGp({
-      id: elements.gpDisplayInput.value,
-      name: gpEditName,
-      gpa: elements.gpDisplay.innerHTML,
-      results: results
-    });
-  
-  }else{
-    updateGp({
-      id: elements.gpDisplayInput.value,
-      name: gpEditName,
-      gpa: elements.gpDisplay.innerHTML
-    });
+elements.gpEditNameInput.addEventListener('keypress', (e) => {
+  if (e.charCode === 13) {
+    popUpdater(e);
   }
 });
+
+elements.updateGp.addEventListener('click', popUpdater);

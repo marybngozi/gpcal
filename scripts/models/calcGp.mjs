@@ -47,15 +47,15 @@ export const removeGpa = (gpaId) => {
 } 
 
 export const updateGpa = (updateObj) => {
-  let gpIndex = getGpa().findIndex(gpa => updateObj.id === gpa.id);
+  let gpIndex = gpArr.findIndex(gpa => updateObj.id === gpa.id);
 
   if (updateObj.hasOwnProperty('results')) {
-    getGpa().splice(gpIndex, 1, updateObj);
+    gpArr.splice(gpIndex, 1, updateObj);
     saveGpStore();
   }else{
-    let storeGpa = getGpa().splice(gpIndex, 1);
+    let storeGpa = gpArr.splice(gpIndex, 1);
     storeGpa[0].name = updateObj.name;
-    getGpa().splice(gpIndex, 0, storeGpa[0]);
+    gpArr.splice(gpIndex, 0, storeGpa[0]);
     saveGpStore();
   }
 }

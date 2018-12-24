@@ -2,15 +2,18 @@ export const elements = {
   menu: document.querySelectorAll('.menu-icon'),
   canvas: document.querySelector('#off-canvas'),
   noGpView: document.querySelector('#no-gp-yet'),
+  noGpViewP: document.querySelector('#no-gp-yet div p'),
   showCalcArea: document.querySelector('#showCalcArea'),
   calcArea: document.querySelector('#calcArea') ,
   addGpRowBtn: document.querySelector('#addGpRow'),
   gpCalcUl: document.querySelector('#gpCalcUl'),
   gpDisplayInput: document.querySelector('#gpa-display #gpaId'),
+  gpDisplayMode: document.querySelector('#gpa-display #gpaMode'),
   gpDisplay: document.querySelector('#gpa-display h1'),
   gpDisplayP: document.querySelector('#gpa-display p'),
   showSaveGpPopBtn: document.querySelector('#saveGpBtn'),
   savePopup: document.querySelector('#save-popup'),
+  savePopupP: document.querySelector('#save-popup p'),
   saveGp: document.querySelector('#save-btn'),
   gpNameInput: document.querySelector('#gpName'),
   showSavedGp: document.querySelector('#show-saved-gp'),
@@ -25,5 +28,6 @@ export const elements = {
   showUpdateGpPopBtn: document.querySelector('#updateGpBtn'),
   updatePopup: document.querySelector('#update-popup'),
   gpEditNameInput: document.querySelector('#gpEditName'),
-  updateGp: document.querySelector('#update-btn')
+  updateGp: document.querySelector('#update-btn'),
+  footerDiv: document.querySelectorAll('.addField-container')
 }
