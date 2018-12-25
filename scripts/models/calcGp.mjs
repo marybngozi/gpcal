@@ -25,6 +25,31 @@ const matchGradeScoreUni = (grade) => {
   return score;
 }
 
+const matchGradeScorePoly = (grade) => {
+  let score;
+  switch (grade) {
+    case "A":
+      score = 4;
+      break;
+    case "AB":
+      score = 3.5;
+      break;
+    case "B":
+      score = 3;
+      break;
+    case "BC":
+      score = 2.5;
+      break;
+    case "C":
+      score = 2;
+      break;
+    case "E":
+      score = 0;
+      break;
+  }
+  return score;
+}
+
 const loadSavedGp = () => {
   const gpaJSON = localStorage.getItem('gpArr');
   try {
@@ -72,8 +97,13 @@ export const add2gpArr = (gpObj) => {
   saveGpStore();
 }
 
-export const productCredUnitGrade = (credUnit, grade) => {
-  return matchGradeScoreUni(grade) * credUnit;
+export const productCredUnitGrade = (credUnit, grade, mode) => {
+  if (mode === "university") {
+    return matchGradeScoreUni(grade) * credUnit;
+  } else if(mode === "polytechnic"){
+    return matchGradeScorePoly(grade) * credUnit;
+  }
+  
 } 
 
 gpArr = loadSavedGp();

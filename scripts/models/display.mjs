@@ -36,7 +36,7 @@ const addEditGpField = (gpResult) => {
   elements.gpEditUl.insertAdjacentHTML('beforeend', gpEditFieldHtml);
 }
 
-export const createGpField = () => {
+export const createGpFieldUni = () => {
   return `
     <li>
       <input type="text" placeholder="Course Code" class="courseCode">
@@ -56,8 +56,32 @@ export const createGpField = () => {
   `;
 }
 
-export const addGpField = () => {
-  elements.gpCalcUl.insertAdjacentHTML('beforeend', createGpField());
+export const createGpFieldPoly = () => {
+  return `
+    <li>
+      <input type="text" placeholder="Course Code" class="courseCode">
+      <input type="number" min="0" placeholder="Credit Unit" class="creditUnit">
+      <select name="grade" class="grade">
+        <option value="-1">Grade</option>
+        <option value="A">A</option>
+        <option value="AB">AB</option>
+        <option value="B">B</option>
+        <option value="BC">BC</option>
+        <option value="C">C</option>
+        <option value="E">E</option>
+      </select>
+      <button>remove</button>
+      
+    </li>
+  `;
+}
+
+export const addGpField = (mode) => {
+  if (mode === "university") {
+    elements.gpCalcUl.insertAdjacentHTML('beforeend', createGpFieldUni());
+  }else if(mode === "polytechnic"){
+    elements.gpCalcUlPoly.insertAdjacentHTML('beforeend', createGpFieldPoly());
+  }  
 }
 
 export const removeGpaField = (parent, child, gpaId) => {
@@ -65,14 +89,30 @@ export const removeGpaField = (parent, child, gpaId) => {
   removeGpa(gpaId);
 }
 
-export const showCalcArea = () => {
+export const showCalcArea = (mode) => {
+  elements.modePop.style.display = "none";
   elements.noGpView.style.display = 'none';
-  elements.calcArea.style.display = 'block';
   elements.showSavedGp.style.display = 'none';
   elements.editArea.style.display = 'none';
   elements.gpDisplayP.innerHTML = "My Gp is"
   elements.gpDisplay.style.display = "block";
   elements.gpDisplay.innerHTML = "0.00";
+  if (mode === "university") {
+    elements.calcAreaUni.style.display = 'block';
+    elements.calcAreaPoly.style.display = 'none';
+  }else if(mode === "polytechnic"){
+    elements.calcAreaUni.style.display = 'none';
+    elements.calcAreaPoly.style.display = 'block';
+  }
+  
+}
+
+export const showModePop = () => {
+  elements.modePop.style.display = "block";
+  elements.gpNameInput.focus();
+  // get overlay for the back
+  // trap focus in the popup
+  // fix focus in input
 }
 
 export const showSavePop = () => {
@@ -90,7 +130,8 @@ export const saveGp = (gpObj) => {
 }
 
 export const showSavedGp = () => {
-  elements.calcArea.style.display = 'none';
+  elements.calcAreaUni.style.display = 'none';
+  elements.calcAreaPoly.style.display = 'none';
   elements.noGpView.style.display = 'none';
   elements.editArea.style.display = 'none';
   elements.showSavedGp.style.display = 'block';
@@ -115,9 +156,16 @@ export const searchGp = (searchText) => {
   }
 }
 
-export const showEditGp = (gpaId) => {
-  elements.editArea.style.display = 'block';
-  elements.calcArea.style.display = 'none';
+export const showEditGp = (gpaId, mode) => {
+  if (mode === "university") {
+    elements.editAreaPoly.style.display = 'none';
+    elements.editAreaUni.style.display = 'block';
+  }else if (mode === "polytechnic") {
+    elements.editAreaUni.style.display = 'none';
+    elements.editAreaPoly.style.display = 'block';
+  }
+  elements.calcAreaUni.style.display = 'none';
+  elements.calcAreaPoly.style.display = 'none';
   elements.noGpView.style.display = 'none';
   elements.showSavedGp.style.display = 'none';
   elements.gpDisplay.style.display = "block";

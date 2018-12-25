@@ -162,11 +162,11 @@ header #gpa-display {
 
 
 /*====================CALC AREA ==============*/
-#calcArea {
+#calcAreaUni, #calcAreaPoly {
   display: none;
   margin-top: 30px;
 }
-#calcArea ul li{
+#calcAreaUni ul li, #calcAreaPoly ul li{
   width: 98%;
   height: 48px;
   margin: 0 1%;
@@ -178,25 +178,25 @@ header #gpa-display {
   justify-content: space-between;
   padding: 2% 0;
 }
-#calcArea ul li input{
+#calcAreaUni ul li input, #calcAreaPoly ul li input{
   background: #FBFBFB;
   text-align: center;
   width: 25%;
   border-bottom: 2px solid #437f88;
 }
-#calcArea ul li .courseCode{
+#calcAreaUni ul li .courseCode, #calcAreaPoly ul li .courseCode{
   margin-left: 1%;
 }
-#calcArea ul li .creditUnit{
+#calcAreaUni ul li .creditUnit, #calcAreaPoly ul li .creditUnit{
   width: 18%;
 }
-#calcArea ul li select{
+#calcAreaUni ul li select, #calcAreaPoly ul li select{
   border: 0;
   background: #FBFBFB;
   color: #80a2ad;
   font-size: 70%;
 }
-#calcArea ul li button{
+#calcAreaUni ul li button, #calcAreaPoly ul li button{
   margin-right: 1%;
   width: auto;
   margin-top: 0;
@@ -211,8 +211,8 @@ header #gpa-display {
   margin-top: 10px;
   margin-bottom: 28%;
 }
-/************POPUP MODAL FOR SAVE & UPDATE******/
-#save-popup, #update-popup{
+/************POPUP MODAL FOR MODE, SAVE & UPDATE******/
+#save-popup, #update-popup, #mode-popup{
   display: none;
   height: auto;
   width: 69%;
@@ -235,10 +235,7 @@ header #gpa-display {
   padding: 5px;
 
 }
-elements.gpDisplayP.innerHTML = "My Gp is"
-elements.gpDisplay.style.display = "block";
-elements.gpDisplay.innerHTML = "0.00";
-#save-popup .ip_btn, #update-popup .ip_btn{
+#save-popup .ip_btn, #update-popup .ip_btn, #mode-popup .ip_btn{
   background: #fff;
   width: auto;
   color: #4a6f7c;
@@ -246,7 +243,7 @@ elements.gpDisplay.innerHTML = "0.00";
   left: 74%;
   font-weight: bold;
 }
-#save-popup .close-pop, #update-popup .close-pop{
+#save-popup .close-pop, #update-popup .close-pop, #mode-popup .close-pop{
   background: #fff;
   width: auto;
   color: #4a6f7c;
@@ -257,6 +254,11 @@ elements.gpDisplay.innerHTML = "0.00";
   height: 36px;
   width: 36px;
   left: 89%;
+}
+#mode-popup p label{
+  margin: 5px 15px; 
+  font-size: 95%;
+  padding: 1%;
 }
 
 /*============================= SHOW SAVED GPs ====================*/
