@@ -78,6 +78,9 @@ header #gpa-display {
   color: #aaa;
   font-size: 88%;
 }
+.addField-container p #swisel_logo{
+  margin-bottom: 0;
+}
 /*=================== OFF CANVAS =====================*/
 #off-canvas{
   width: 270px;
