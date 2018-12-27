@@ -81,6 +81,10 @@ header #gpa-display {
   color: #aaa;
   font-size: 88%;
 }
+.addField-container p #swisel_logo{
+  margin-bottom: 0;
+}
+
 /*=================== OFF CANVAS =====================*/
 #off-canvas{
   width: 270px;
@@ -144,7 +148,6 @@ header #gpa-display {
   color: rgb(114, 3, 3);
 }
 
-
 /*===================== SECTION FRONT PAGE ========================*/
 #no-gp-yet{
   margin: 30px 0;
@@ -162,7 +165,6 @@ header #gpa-display {
   width: 80%;
   padding: 3%;
 }
-
 
 /*====================CALC AREA ==============*/
 #calcAreaUni, #calcAreaPoly {
@@ -214,7 +216,9 @@ header #gpa-display {
   margin-top: 10px;
   margin-bottom: 28%;
 }
-/************POPUP MODAL FOR MODE, SAVE & UPDATE******/
+
+
+/*============== POPUP MODAL FOR SAVE & UPDATE ==========**/
 #save-popup, #update-popup, #mode-popup{
   display: none;
   height: auto;
@@ -236,7 +240,6 @@ header #gpa-display {
 #save-popup p, #update-popup p{
   font-size: 65%;
   padding: 5px;
-
 }
 #save-popup .ip_btn, #update-popup .ip_btn, #mode-popup .ip_btn{
   background: #fff;
