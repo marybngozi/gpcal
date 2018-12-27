@@ -26,7 +26,7 @@ const calcRenderGp = (lists) => {
     let eachSelectVal = list.querySelector('select').value;
     if (eachCUVal !== "" && eachSelectVal !== "" && eachSelectVal !== "-1" && eachSelectVal !== -1) {
       creditSum += eachCUVal;
-      sum += productCredUnitGrade(eachCUVal, eachSelectVal);
+      sum += productCredUnitGrade(eachCUVal, eachSelectVal, elements.gpDisplayMode.value);
       gpTempArr.push({
         id: uuidv4(),
         cCode: eachCCVal,
@@ -125,14 +125,12 @@ elements.menu.forEach(icon => {
 
 elements.showCalcAreaBtn.addEventListener('click', () => {
   showModePop();
-
 })
 
 elements.proceedBtn.addEventListener('click', (e) => {
   e.preventDefault();
   let mode = e.target.parentElement.querySelector("input[name='mode']:checked");
   if (mode) {
-    console.log(mode.value)
     elements.gpDisplayMode.value = mode.value;
     showCalcArea(mode.value);
   }
@@ -140,18 +138,14 @@ elements.proceedBtn.addEventListener('click', (e) => {
 });
 
 elements.showCalcArea.addEventListener('click', () => {// needs work
-  showCalcArea();
+  showModePop();
   elements.canvas.classList.toggle('open');
 })
 
 elements.addGpRowBtn.forEach(addBtn => {
   addBtn.addEventListener('click', () => {
+    console.log(elements.gpDisplayMode.value);
     addGpField(elements.gpDisplayMode.value);
-    let h = elements.gpCalcUl.clientHeight;
-    window.scrollTo({
-      top: h,
-      behavior: 'smooth'
-    })
   });
 });
 
@@ -237,7 +231,7 @@ elements.gpShowUl.addEventListener('click', (e) => { // deletes a removed gp
 elements.gpShowUl.addEventListener('click', (e) => { // edits a saved gp
   if (e.target.matches('.edit-gpa')) {
     let gpaId = e.target.parentNode.querySelector('input').value;
-    showEditGp(gpaId);
+    showEditGp(gpaId, elements.gpDisplayMode.value);
   }
 });
 

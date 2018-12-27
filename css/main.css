@@ -49,9 +49,12 @@ header nav #menu-icon button {
   width: auto;
 }
 header #gpa-display {
-  margin-top: 5%;
   text-align: center;
   color: #fff;
+}
+#notify{
+  color: rgb(214, 228, 235);
+  font-size: 88%;
 }
 .addField-container{
   position: fixed;
@@ -205,7 +208,7 @@ header #gpa-display {
   font-size: 70%;
   color: rgb(114, 3, 3);
 }
-#saveGpBtn, #updateGpBtn{
+.saveGpBtn, .updateGpBtn{
   width: 80%;
   padding: 3%;
   margin-top: 10px;
@@ -285,8 +288,7 @@ header #gpa-display {
   
 }
 #show-saved-gp #saved-gp{
-  margin-top: 90px;
-
+  margin: 90px 0;
 }
 #show-saved-gp #saved-gp ul li{
   width: 98%;
@@ -330,11 +332,11 @@ header #gpa-display {
 }
 
 /*============================= EDIT SAVED GPs ====================*/
-#editArea{
+#editAreaUni, #editAreaPoly{
   display: none;
   margin-top: 10px;
 }
-#editArea ul li, #editArea ul div{
+#editAreaUni ul li, #editAreaPoly ul li{
   width: 98%;
   height: 48px;
   padding-left: 0;
@@ -347,34 +349,25 @@ header #gpa-display {
   justify-content: space-between;
 
 }
-#editArea ul div label {
-  margin-top: 7px;
-  padding: 2%;
-  font-size: 70%;
-  color: #437f88;
-}
-#editArea ul li input, #editArea ul div label input{
+#editAreaUni ul li input, #editAreaPoly ul li input{
   background: #FBFBFB;
   text-align: center;
   width: 25%;
   border-bottom: 2px solid #437f88;
 }
-#editArea ul div label input{
-  width: 60%;
-}
-#editArea ul li .courseCode{
+#editAreaUni ul li .courseCode, #editAreaPoly ul li .courseCode{
   margin-left: 1%;
 }
-#editArea ul li .creditUnit{
+#editAreaUni ul li .creditUnit, #editAreaPoly ul li .creditUnit{
   width: 18%;
 }
-#editArea ul li select{
+#editAreaUni ul li select, #editAreaPoly ul li select{
   border: 0;
   background: #FBFBFB;
   color: #80a2ad;
   font-size: 70%;
 }
-#editArea ul li button{
+#editAreaUni ul li button, #editAreaPoly ul li button{
   margin-right: 1%;
   width: auto;
   margin-top: 0;

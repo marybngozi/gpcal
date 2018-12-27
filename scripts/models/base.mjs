@@ -1,5 +1,6 @@
 export const elements = {
   menu: document.querySelectorAll('.menu-icon'),
+  notify: document.querySelector('#notify'),
   canvas: document.querySelector('#off-canvas'),
   noGpView: document.querySelector('#no-gp-yet'),
   noGpViewP: document.querySelector('#no-gp-yet div p'),
@@ -35,5 +36,6 @@ export const elements = {
   gpEditNameInput: document.querySelector('#gpEditName'),
   updateGp: document.querySelector('#update-btn'),
   gpCalcUlPoly: document.querySelector('#gpCalcUlPoly'),
-  footerDiv: document.querySelectorAll('.addField-container')
+  footerDiv: document.querySelectorAll('.addField-container'),
+  aboutSec: document.querySelector('#about')
 }
