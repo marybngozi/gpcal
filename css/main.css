@@ -78,6 +78,7 @@ header #gpa-display {
   position: absolute;
   right: 5px;
   bottom: 2px;
+  padding-right: 2%;
   color: #aaa;
   font-size: 88%;
 }
@@ -143,9 +144,6 @@ header #gpa-display {
   position: absolute;
   bottom: 0;
   font-size: 80%;
-}
-#off-canvas #off-canvas-footer span{
-  color: rgb(114, 3, 3);
 }
 
 /*===================== SECTION FRONT PAGE ========================*/
@@ -378,4 +376,28 @@ header #gpa-display {
   padding: 2%;
   font-size: 70%;
   color: rgb(114, 3, 3);
+}
+
+/* ================= ABOUT SECTION ================== */
+#about {
+  display: none;
+  padding: 3%;
+
+}
+#about div h5{
+  text-align: center;
+  font-size: 92%;
+
+}
+#about div p{
+  font-size: 85%;
+  line-height: 28px;
+  letter-spacing: 1px;
+
+}
+#about #abt_gcal {
+  margin-bottom: 12%;
+}
+#about #abt_swisel {
+  margin-bottom: 2%;
 }

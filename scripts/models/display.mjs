@@ -175,7 +175,6 @@ export const showSavedGp = () => {
   elements.canvas.classList.toggle('open');
   elements.gpDisplay.style.display = "none";
   elements.gpDisplayP.innerHTML = "My GPAs"
-  elements.searchInput.focus();
   getGpa().forEach(gpa => {
     addSavedGpField(gpa)
   });
@@ -214,6 +213,12 @@ export const showEditGp = (gpaId, mode) => {
       }
     }
   }
+}
+
+export const showAbout = () => {
+  sectionSwitch();
+  elements.aboutSec.style.display = "block";
+  elements.canvas.classList.toggle('open');
 }
 
 export const saveGp = (gpObj) => {

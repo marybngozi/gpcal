@@ -1,4 +1,4 @@
-import { showCalcArea, addGpField, showSavePop, saveGp, removeGpaField, showSavedGp, searchGp, showEditGp, createGpFieldUni, createGpFieldPoly, showUpdatePop, updateGp, showModePop } from "./models/display.mjs";
+import { showCalcArea, addGpField, showSavePop, saveGp, removeGpaField, showSavedGp, searchGp, showEditGp, createGpFieldUni, createGpFieldPoly, showUpdatePop, updateGp, showModePop, showAbout } from "./models/display.mjs";
 import { elements } from './models/base.mjs';
 import { productCredUnitGrade, getGpa } from "./models/calcGp.mjs";
 
@@ -303,3 +303,5 @@ elements.gpEditNameInput.addEventListener('keypress', (e) => {
 });
 
 elements.updateGp.addEventListener('click', popUpdater);
+
+elements.aboutBtn.addEventListener('click', showAbout);

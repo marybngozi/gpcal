@@ -37,5 +37,6 @@ export const elements = {
   updateGp: document.querySelector('#update-btn'),
   gpCalcUlPoly: document.querySelector('#gpCalcUlPoly'),
   footerDiv: document.querySelectorAll('.addField-container'),
-  aboutSec: document.querySelector('#about')
+  aboutSec: document.querySelector('#about'),
+  aboutBtn: document.querySelector('#about_btn')
 }
