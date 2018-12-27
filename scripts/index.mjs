@@ -1,4 +1,4 @@
-import { showCalcArea, addGpField, showSavePop, saveGp, removeGpaField, showSavedGp, searchGp, showEditGp, createGpField, showUpdatePop, updateGp } from "./models/display.mjs";
+import { showCalcArea, addGpField, showSavePop, saveGp, removeGpaField, showSavedGp, searchGp, showEditGp, createGpFieldUni, createGpFieldPoly, showUpdatePop, updateGp, showModePop } from "./models/display.mjs";
 import { elements } from './models/base.mjs';
 import { productCredUnitGrade, getGpa } from "./models/calcGp.mjs";
 
@@ -26,7 +26,7 @@ const calcRenderGp = (lists) => {
     let eachSelectVal = list.querySelector('select').value;
     if (eachCUVal !== "" && eachSelectVal !== "" && eachSelectVal !== "-1" && eachSelectVal !== -1) {
       creditSum += eachCUVal;
-      sum += productCredUnitGrade(eachCUVal, eachSelectVal);
+      sum += productCredUnitGrade(eachCUVal, eachSelectVal, elements.gpDisplayMode.value);
       gpTempArr.push({
         id: uuidv4(),
         cCode: eachCCVal,
@@ -52,7 +52,7 @@ const editCalcRenderGp = (lists) => {
     let eachSelectVal = list.querySelector('select').value;
     if (eachCUVal !== "" && eachSelectVal !== "" && eachSelectVal !== "-1") {
       creditSumEdit += eachCUVal;
-      sumEdit += productCredUnitGrade(eachCUVal, eachSelectVal);
+      sumEdit += productCredUnitGrade(eachCUVal, eachSelectVal, elements.gpDisplayMode.value);
       gpEditTempArr.push({
         cCode: eachCCVal,
         cCredUnit: eachCUVal,
@@ -79,6 +79,7 @@ const popSaver = (e) => {
       saveGp({
         name: gpName,
         gpa,
+        mode: elements.gpDisplayMode.value,
         results: gpResults[gpResults.length - 1]
       });
     }else{
@@ -122,25 +123,43 @@ elements.menu.forEach(icon => {
   });
 });
 
-elements.showCalcAreaBtn.addEventListener('click', showCalcArea)
+elements.showCalcAreaBtn.addEventListener('click', () => {
+  showModePop();
+})
 
-elements.showCalcArea.addEventListener('click', () => {
-  showCalcArea();
+elements.proceedBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  let mode = e.target.parentElement.querySelector("input[name='mode']:checked");
+  if (mode) {
+    elements.gpDisplayMode.value = mode.value;
+    showCalcArea(mode.value);
+  }
+  
+});
+
+elements.showCalcArea.addEventListener('click', () => {// needs work
+  showModePop();
   elements.canvas.classList.toggle('open');
 })
 
-elements.addGpRowBtn.addEventListener('click', () => {
-  addGpField();
-  let h = elements.gpCalcUl.clientHeight;
-  window.scrollTo({
-    top: h,
-    behavior: 'smooth'
-  })
-  
+elements.addGpRowBtn.forEach(addBtn => {
+  addBtn.addEventListener('click', () => {
+    console.log(elements.gpDisplayMode.value);
+    addGpField(elements.gpDisplayMode.value);
+  });
 });
 
 ['input', 'change'].forEach(evt => {
   elements.gpCalcUl.addEventListener(evt, (e) => {
+    if (e.target.matches('.creditUnit') || e.target.matches('.courseCode') || e.target.matches('select')) {
+      const li = e.target.parentNode.parentNode.querySelectorAll('li');
+      calcRenderGp(li);
+    }
+  })
+});
+
+['input', 'change'].forEach(evt => {
+  elements.gpCalcUlPoly.addEventListener(evt, (e) => {
     if (e.target.matches('.creditUnit') || e.target.matches('.courseCode') || e.target.matches('select')) {
       const li = e.target.parentNode.parentNode.querySelectorAll('li');
       calcRenderGp(li);
@@ -157,18 +176,29 @@ elements.gpCalcUl.addEventListener('click', (e) => { // deletes a removed gp
   }
 });
 
+elements.gpCalcUlPoly.addEventListener('click', (e) => { // deletes a removed gp
+  if (e.target.matches('button')) {
+    let child = e.target.parentNode;
+    let parent = e.target.parentNode.parentNode;
+    parent.removeChild(child);
+    calcRenderGp(parent.querySelectorAll('li'));
+  }
+});
+
 elements.closePop.forEach(btn => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
     elements.savePopup.style.display = 'none';
     elements.updatePopup.style.display = 'none';
+    elements.modePop.style.display = 'none';
   });
 });
 
-elements.showSaveGpPopBtn.addEventListener('click', () => {
-  showSavePop();
-
-});
+elements.showSaveGpPopBtn.forEach(btn => {
+  btn.addEventListener('click', () => {
+    showSavePop();
+  });
+})
 
 elements.gpNameInput.addEventListener('keypress', (e) => {
   if (e.charCode === 13) {
@@ -201,12 +231,12 @@ elements.gpShowUl.addEventListener('click', (e) => { // deletes a removed gp
 elements.gpShowUl.addEventListener('click', (e) => { // edits a saved gp
   if (e.target.matches('.edit-gpa')) {
     let gpaId = e.target.parentNode.querySelector('input').value;
-    showEditGp(gpaId);
+    showEditGp(gpaId, elements.gpDisplayMode.value);
   }
 });
 
 ['input', 'change'].forEach(evt => {
-  elements.gpEditUl.addEventListener(evt, (e) => {
+  elements.gpEditUlUni.addEventListener(evt, (e) => {
     if (e.target.matches('.creditUnit') || e.target.matches('.courseCode') || e.target.matches('select')) {
       const li = e.target.parentNode.parentNode.querySelectorAll('li');
       editCalcRenderGp(li);
@@ -214,7 +244,16 @@ elements.gpShowUl.addEventListener('click', (e) => { // edits a saved gp
   })
 });
 
-elements.gpEditUl.addEventListener('click', (e) => { // deletes a removed gp
+['input', 'change'].forEach(evt => {
+  elements.gpEditUlPoly.addEventListener(evt, (e) => {
+    if (e.target.matches('.creditUnit') || e.target.matches('.courseCode') || e.target.matches('select')) {
+      const li = e.target.parentNode.parentNode.querySelectorAll('li');
+      editCalcRenderGp(li);
+    }
+  })
+});
+
+elements.gpEditUlUni.addEventListener('click', (e) => { // deletes a removed gp
   if (e.target.matches('button')) {
     let child = e.target.parentNode;
     let parent = e.target.parentNode.parentNode;
@@ -223,19 +262,40 @@ elements.gpEditUl.addEventListener('click', (e) => { // deletes a removed gp
   }
 });
 
-elements.addGpRowEdit.addEventListener('click', () => {
-  elements.gpEditUl.insertAdjacentHTML('beforeend', createGpField());
-  let h = elements.gpEditUl.clientHeight;
-  window.scrollTo({
-    top: h,
-    behavior: 'smooth'
-  })
+elements.gpEditUlPoly.addEventListener('click', (e) => { // deletes a removed gp
+  if (e.target.matches('button')) {
+    let child = e.target.parentNode;
+    let parent = e.target.parentNode.parentNode;
+    parent.removeChild(child);
+    editCalcRenderGp(parent.querySelectorAll('li'));
+  }
 });
 
-elements.showUpdateGpPopBtn.addEventListener('click', () => {
-  showUpdatePop();
-
+elements.addGpRowEdit.forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (elements.gpDisplayMode.value === "university") {
+      elements.gpEditUlUni.insertAdjacentHTML('beforeend', createGpFieldUni());
+      let h = elements.gpEditUlUni.clientHeight;
+      window.scrollTo({
+        top: h,
+        behavior: 'smooth'
+      })
+    }else if(elements.gpDisplayMode.value === "polytechnic"){
+      elements.gpEditUlPoly.insertAdjacentHTML('beforeend', createGpFieldPoly());
+      let h = elements.gpEditUlPoly.clientHeight;
+      window.scrollTo({
+        top: h,
+        behavior: 'smooth'
+      })
+    }
+  });
 });
+
+elements.showUpdateGpPopBtn.forEach(btn => {
+  btn.addEventListener('click', () => {
+    showUpdatePop();
+  });
+})
 
 elements.gpEditNameInput.addEventListener('keypress', (e) => {
   if (e.charCode === 13) {

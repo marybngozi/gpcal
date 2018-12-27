@@ -21,8 +21,42 @@
             <p><img src="./images/Logo.svg" width="50" height="50"></p>
             <h1>GCal</h1>
         </div>
+        <center><span id="notify"></span></center>
     </header>  
     <main>
+        <!-- MODE CHOOSER POPUP -->
+        <form id="mode-popup">
+            <button class="close-pop">x</button>
+            <h5>Calculate GP for</h5>
+            <p><label for="uni"><input type="radio" id="uni" name="mode" value="university">University</label></p>
+            <p><label for="poly"><input type="radio" id="poly" name="mode" value="polytechnic">Polytechnic</label></p><br>
+            <button type="submit" class="ip_btn" id="proceed-btn">Proceed</button>
+        </form>
+
+        <!-- SAVE POPUP -->
+        <form id="save-popup">
+            <button class="close-pop">x</button>
+            <div id="input-group">
+                <input type="text" placeholder="Edit GP name" id="gpName" required>
+                <img src="./images/fountain-pen-close-up.svg" alt="Edit GP name">
+            </div>
+            
+            <p>This GPA will be temporally saved</p>
+            <input type="submit" class="ip_btn" id="save-btn" value="Save">
+        </form>
+
+        <!-- UPDATE POPUP -->
+        <form id="update-popup">
+            <button class="close-pop">x</button>
+            <div id="input-group">
+                <input type="text" placeholder="Edit GP name" id="gpEditName" required>
+                <img src="./images/fountain-pen-close-up.svg" alt="Edit GP name">
+            </div>
+            
+            <p>This GPA is temporally saved</p>
+            <input type="submit" class="ip_btn" id="update-btn" value="Update">  
+        </form>
+
         <!-- OFF CANVAS SECTION -->
         <section id="off-canvas">
             <button id="close-menu" class="menu-icon"><img src="./images/menu.svg" alt="close-menu" srcset=""></button>
@@ -55,8 +89,8 @@
             
         </section>
 
-        <!-- INPUT AND CALCULATE GP AREA-->
-        <section id="calcArea">
+        <!-- INPUT AND CALCULATE GP UNI AREA-->
+        <section id="calcAreaUni">
             <ul id="gpCalcUl">
                 <li>
                     <input type="text" placeholder="Course Code" class="courseCode">
@@ -104,20 +138,62 @@
                     
                 </li>
             </ul>
-            <center><button id="saveGpBtn">Save my GPA</button></center>
+            <center><button class="saveGpBtn">Save my GPA</button></center>
             <div class="addField-container">
-                <button id="addGpRow"><img src="./images/Group 7.svg" alt="add GP column"></button>
+                <button class="addGpRow"><img src="./images/Group 7.svg" alt="add GP column"></button>
             </div>
-            <form id="save-popup">
-                <button class="close-pop">x</button>
-                <div id="input-group">
-                    <input type="text" placeholder="Edit GP name" id="gpName" required>
-                    <img src="./images/fountain-pen-close-up.svg" alt="Edit GP name">
-                </div>
-                
-                <p>This GPA will be temporally saved</p>
-                <input type="submit" class="ip_btn" id="save-btn" value="Save">
-            </form>
+        </section>
+
+        <!-- INPUT AND CALCULATE GP POLY AREA-->
+        <section id="calcAreaPoly">
+            <ul id="gpCalcUlPoly">
+                <li>
+                    <input type="text" placeholder="Course Code" class="courseCode">
+                    <input type="number" min="0" placeholder="Credit Unit" class="creditUnit">
+                    <select name="grade" class="grade">
+                      <option value="-1">Grade</option>
+                      <option value="A">A</option>
+                      <option value="AB">AB</option>
+                      <option value="B">B</option>
+                      <option value="BC">BC</option>
+                      <option value="C">C</option>
+                      <option value="E">E</option>
+                    </select>
+                    <button>remove</button>
+                </li>
+                 <li>
+                    <input type="text" placeholder="Course Code" class="courseCode">
+                    <input type="number" min="0" placeholder="Credit Unit" class="creditUnit">
+                    <select name="grade" class="grade">
+                      <option value="-1">Grade</option>
+                      <option value="A">A</option>
+                      <option value="AB">AB</option>
+                      <option value="B">B</option>
+                      <option value="BC">BC</option>
+                      <option value="C">C</option>
+                      <option value="E">E</option>
+                    </select>
+                    <button>remove</button>
+                </li>
+                 <li>
+                    <input type="text" placeholder="Course Code" class="courseCode">
+                    <input type="number" min="0" placeholder="Credit Unit" class="creditUnit">
+                    <select name="grade" class="grade">
+                      <option value="-1">Grade</option>
+                      <option value="A">A</option>
+                      <option value="AB">AB</option>
+                      <option value="B">B</option>
+                      <option value="BC">BC</option>
+                      <option value="C">C</option>
+                      <option value="E">E</option>
+                    </select>
+                    <button>remove</button>
+                </li>
+            </ul>
+            <center><button class="saveGpBtn">Save my GPA</button></center>
+            <div class="addField-container">
+                <button class="addGpRow"><img src="./images/Group 7.svg" alt="add GP column"></button>
+            </div>
         </section>
 
         <!-- SHOW SAVED GPs -->
@@ -134,25 +210,30 @@
             </div>
         </section>
 
-        <!-- EDIT AND CALCULATE GP AREA-->
-        <section id="editArea">
-            <ul id="gpEditUl"></ul>
-            <center><button id="updateGpBtn">Update my GPA</button></center>
+        <!-- EDIT AND CALCULATE GP UNI AREA-->
+        <section id="editAreaUni">
+            <ul id="gpEditUlUni"></ul>
+            <center><button class="updateGpBtn">Update my GPA</button></center>
             <div class="addField-container">
-                <button id="addGpRowEdit"><img src="./images/Group 7.svg" alt="add GP column"></button>
+                <button class="addGpRowEdit"><img src="./images/Group 7.svg" alt="add GP column"></button>
             </div>
-            <form id="update-popup">
-                <button class="close-pop">x</button>
-                <div id="input-group">
-                    <input type="text" placeholder="Edit GP name" id="gpEditName" required>
-                    <img src="./images/fountain-pen-close-up.svg" alt="Edit GP name">
-                </div>
-                
-                <p>This GPA is temporally saved</p>
-                <input type="submit" class="ip_btn" id="update-btn" value="Update">            </form>
+        </section>
+
+        <!-- EDIT AND CALCULATE GP POLY AREA-->
+        <section id="editAreaPoly">
+            <ul id="gpEditUlPoly"></ul>
+            <center><button class="updateGpBtn">Update my GPA</button></center>
+            <div class="addField-container">
+                <button class="addGpRowEdit"><img src="./images/Group 7.svg" alt="add GP column"></button>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about">
+
         </section>
     </main>  
-    <script src="./scripts/index.mjs" type="module"></script>
     <script src="./scripts/models/uuid.js"></script>
+    <script src="./scripts/index.mjs" type="module"></script>
 </body>
 </html>
