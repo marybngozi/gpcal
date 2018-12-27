@@ -33,6 +33,7 @@ export const elements = {
   addGpRowEdit: document.querySelectorAll('.addGpRowEdit'),
   showUpdateGpPopBtn: document.querySelectorAll('.updateGpBtn'),
   updatePopup: document.querySelector('#update-popup'),
+  updatePopupP: document.querySelector('#update-popup p'),
   gpEditNameInput: document.querySelector('#gpEditName'),
   updateGp: document.querySelector('#update-btn'),
   gpCalcUlPoly: document.querySelector('#gpCalcUlPoly'),

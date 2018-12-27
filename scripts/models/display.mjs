@@ -180,32 +180,26 @@ export const showSavedGp = () => {
   });
 }
 
-export const showEditGp = (gpaId, mode) => {
+export const showEditGp = (gpaId) => {
   sectionSwitch();
-  if (mode === "university") {
-    elements.editAreaUni.style.display = 'block';
-    elements.gpEditUlUni.innerHTML = "";
+  let gpaInfo = getGpa().find(gpa => gpa.id === gpaId);
+  if (gpaInfo) {
+    elements.gpDisplayP.innerHTML = gpaInfo.name;
+    elements.gpDisplayInput.value = gpaInfo.id;
+    elements.gpDisplayMode.value = gpaInfo.mode;
+    elements.gpDisplay.innerHTML = gpaInfo.gpa;
     elements.gpDisplay.style.display = "block";
-    let gpaInfo = getGpa().find(gpa => gpa.id === gpaId);
-    if (gpaInfo) {
-      elements.gpDisplayP.innerHTML = gpaInfo.name;
-      elements.gpDisplayInput.value = gpaInfo.id
-      elements.gpDisplay.innerHTML = gpaInfo.gpa;
+    if (gpaInfo.mode === "university") {
+      elements.editAreaUni.style.display = 'block';
+      elements.gpEditUlUni.innerHTML = "";
       if (gpaInfo.results.length > 0) {
         gpaInfo.results.forEach(gpResult => {
           addEditGpFieldUni(gpResult);
         })  
       }
-    }
-  }else if (mode === "polytechnic") {
-    elements.editAreaPoly.style.display = 'block';
-    elements.gpEditUlPoly.innerHTML = "";
-    elements.gpDisplay.style.display = "block";
-    let gpaInfo = getGpa().find(gpa => gpa.id === gpaId);
-    if (gpaInfo) {
-      elements.gpDisplayP.innerHTML = gpaInfo.name;
-      elements.gpDisplayInput.value = gpaInfo.id
-      elements.gpDisplay.innerHTML = gpaInfo.gpa;
+    }else if (gpaInfo.mode === "polytechnic") {
+      elements.editAreaPoly.style.display = 'block';
+      elements.gpEditUlPoly.innerHTML = "";
       if (gpaInfo.results.length > 0) {
         gpaInfo.results.forEach(gpResult => {
           addEditGpFieldPoly(gpResult);
@@ -227,6 +221,9 @@ export const saveGp = (gpObj) => {
   elements.gpNameInput.value = "";
   elements.notify.style.display = "block";
   elements.notify.innerHTML = "Saved!";
+  document.querySelectorAll('#calcAreaUni input, #calcAreaPoly input').forEach(input => {
+    input.value = "";
+  })
   setTimeout(() => {
     elements.notify.innerHTML = "";
   }, 2000);

@@ -94,25 +94,35 @@ const popSaver = (e) => {
 const popUpdater = (e) => {
   e.preventDefault();
   let gpEditName = elements.gpEditNameInput.value.trim();
-  if (gpEditName !== "" && gpResultsEdit.length > 0) {
-    let results = gpResultsEdit[gpResultsEdit.length - 1];
-    /*******undo these *//***get a function to do this so it can be reusable */
-    // get overlay for the back
-    // trap focus in the popup
-    // fix focus in input
-    updateGp({
-      id: elements.gpDisplayInput.value,
-      name: gpEditName,
-      gpa: elements.gpDisplay.innerHTML,
-      results: results
-    });
-  
+  if (gpEditName !== "") {
+    if (elements.gpDisplay.innerHTML !== "0.00") {
+      if (gpResultsEdit.length > 0) {
+        let results = gpResultsEdit[gpResultsEdit.length - 1];
+        /*******undo these *//***get a function to do this so it can be reusable */
+        // get overlay for the back
+        // trap focus in the popup
+        // fix focus in input
+        updateGp({
+          id: elements.gpDisplayInput.value,
+          name: gpEditName,
+          gpa: elements.gpDisplay.innerHTML,
+          mode: elements.gpDisplayMode.value,
+          results: results
+        });
+      }else{
+        updateGp({
+          id: elements.gpDisplayInput.value,
+          name: gpEditName,
+          gpa: elements.gpDisplay.innerHTML,
+          mode: elements.gpDisplayMode.value
+        });
+      }
+    }else{
+      elements.updatePopupP.innerHTML = "GPA is 0.00";
+    }
   }else{
-    updateGp({
-      id: elements.gpDisplayInput.value,
-      name: gpEditName,
-      gpa: elements.gpDisplay.innerHTML
-    });
+    elements.updatePopupP.innerHTML = "Name Field can't be empty!";
+    elements.gpEditNameInput.focus();
   }
 }
 
@@ -230,7 +240,7 @@ elements.gpShowUl.addEventListener('click', (e) => { // deletes a removed gp
 elements.gpShowUl.addEventListener('click', (e) => { // edits a saved gp
   if (e.target.matches('.edit-gpa')) {
     let gpaId = e.target.parentNode.querySelector('input').value;
-    showEditGp(gpaId, elements.gpDisplayMode.value);
+    showEditGp(gpaId);
   }
 });
 

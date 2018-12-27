@@ -91,6 +91,7 @@ export const add2gpArr = (gpObj) => {
   gpArr.push({
     id: uuidv4(),
     name: gpObj.name,
+    mode: gpObj.mode,
     gpa: gpObj.gpa,
     results: gpObj.results
   });
