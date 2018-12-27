@@ -144,7 +144,6 @@ elements.showCalcArea.addEventListener('click', () => {// needs work
 
 elements.addGpRowBtn.forEach(addBtn => {
   addBtn.addEventListener('click', () => {
-    console.log(elements.gpDisplayMode.value);
     addGpField(elements.gpDisplayMode.value);
   });
 });
