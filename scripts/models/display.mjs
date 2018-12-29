@@ -157,20 +157,17 @@ export const showCalcArea = (mode) => {
 export const showModePop = () => {
   elements.modePop.style.display = "block";
   elements.gpNameInput.focus();
-  // trap focus in the popup
 }
 
 export const showSavePop = () => {
   elements.savePopup.style.display = 'block';
   elements.gpNameInput.focus();
-  // trap focus in the popup
 }
 
 export const showUpdatePop = () => {
   elements.updatePopup.style.display = "block";
   elements.gpEditNameInput.value = elements.gpDisplayP.innerHTML;
   elements.gpEditNameInput.focus();
-  //add the overlays
 }
 
 export const showSavedGp = () => {

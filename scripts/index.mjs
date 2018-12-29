@@ -150,7 +150,7 @@ elements.proceedBtn.addEventListener('click', (e) => {
   
 });
 
-elements.showCalcArea.addEventListener('click', () => {// needs work
+elements.showCalcArea.addEventListener('click', () => {
   showModePop();
   createPopCanvasEffect();
   elements.canvas.classList.toggle('open');
