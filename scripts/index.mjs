@@ -1,15 +1,17 @@
-import { showCalcArea, addGpField, showSavePop, saveGp, removeGpaField, showSavedGp, searchGp, showEditGp, createGpFieldUni, createGpFieldPoly, showUpdatePop, updateGp, showModePop, showAbout } from "./models/display.mjs";
+import { showCalcArea, addGpField, showSavePop, saveGp, removeGpaField, showSavedGp, searchGp, showEditGp, createGpFieldUni, createGpFieldPoly, showUpdatePop, updateGp, showModePop, showAbout, createPopCanvasEffect, removePopCanvasEffect, trapFocus } from "./models/display.mjs";
 import { elements } from './models/base.mjs';
 import { productCredUnitGrade, getGpa } from "./models/calcGp.mjs";
 
-if(getGpa().length > 0) {
-  elements.noGpViewP.innerHTML = "Some GPAs Calculated :-)"
-  elements.showCalcAreaBtn.innerHTML = "Calculate more GPAs"
+if(getGpa().length > 0) {;
+  elements.noGpViewImg.src = "/images/savedGp.svg";
+  elements.noGpViewP.innerHTML = "Some GPAs Calculated";
+  elements.showCalcAreaBtn.innerHTML = "Calculate more GPAs";
 }
 
 const footerP = `
-  <p>&copy; Swisel ${new Date().getFullYear()}</p>
+  <a href="https://swisel.co">&copy; Swisel ${new Date().getFullYear()}</a>
 `;
+elements.canvasFooter.insertAdjacentHTML('beforeend', footerP);
 elements.footerDiv.forEach(footDiv => {footDiv.insertAdjacentHTML('beforeend', footerP)});
 
 const gpResults = [];
@@ -70,10 +72,7 @@ const popSaver = (e) => {
   e.preventDefault();
   let gpName = elements.gpNameInput.value.trim();
   let gpa = elements.gpDisplay.innerHTML;
-  /*******undo these *//***get a function to do this so it can be reusable */
-  // get overlay for the back
   // trap focus in the popup
-  // fix focus in input
   if(gpName !== "" && gpName.length !== 0){
     if (elements.gpDisplay.innerHTML !== "0.00") {
       saveGp({
@@ -98,10 +97,7 @@ const popUpdater = (e) => {
     if (elements.gpDisplay.innerHTML !== "0.00") {
       if (gpResultsEdit.length > 0) {
         let results = gpResultsEdit[gpResultsEdit.length - 1];
-        /*******undo these *//***get a function to do this so it can be reusable */
-        // get overlay for the back
         // trap focus in the popup
-        // fix focus in input
         updateGp({
           id: elements.gpDisplayInput.value,
           name: gpEditName,
@@ -129,12 +125,18 @@ const popUpdater = (e) => {
 elements.menu.forEach(icon => {
   icon.addEventListener('click', (e) => {
     elements.canvas.classList.toggle('open');
+    createPopCanvasEffect();
     e.stopPropagation();
   });
 });
 
+elements.closeMenu.addEventListener('click', () => {
+  removePopCanvasEffect();
+})
+
 elements.showCalcAreaBtn.addEventListener('click', () => {
   showModePop();
+  createPopCanvasEffect();
 })
 
 elements.proceedBtn.addEventListener('click', (e) => {
@@ -142,6 +144,7 @@ elements.proceedBtn.addEventListener('click', (e) => {
   let mode = e.target.parentElement.querySelector("input[name='mode']:checked");
   if (mode) {
     elements.gpDisplayMode.value = mode.value;
+    removePopCanvasEffect();
     showCalcArea(mode.value);
   }
   
@@ -149,6 +152,7 @@ elements.proceedBtn.addEventListener('click', (e) => {
 
 elements.showCalcArea.addEventListener('click', () => {// needs work
   showModePop();
+  createPopCanvasEffect();
   elements.canvas.classList.toggle('open');
 })
 
@@ -200,12 +204,14 @@ elements.closePop.forEach(btn => {
     elements.savePopup.style.display = 'none';
     elements.updatePopup.style.display = 'none';
     elements.modePop.style.display = 'none';
+    removePopCanvasEffect();
   });
 });
 
 elements.showSaveGpPopBtn.forEach(btn => {
   btn.addEventListener('click', () => {
     showSavePop();
+    createPopCanvasEffect();
   });
 })
 
@@ -303,6 +309,7 @@ elements.addGpRowEdit.forEach(btn => {
 elements.showUpdateGpPopBtn.forEach(btn => {
   btn.addEventListener('click', () => {
     showUpdatePop();
+    createPopCanvasEffect();
   });
 })
 
@@ -315,3 +322,23 @@ elements.gpEditNameInput.addEventListener('keypress', (e) => {
 elements.updateGp.addEventListener('click', popUpdater);
 
 elements.aboutBtn.addEventListener('click', showAbout);
+
+elements.overlay.addEventListener('click', () => {
+  elements.savePopup.style.display = 'none';
+  elements.updatePopup.style.display = 'none';
+  elements.modePop.style.display = 'none';
+  elements.canvas.classList.remove('open');
+  removePopCanvasEffect();
+})
+
+elements.allPopups.forEach(popup => {
+  popup.addEventListener('keydown', (e) => {
+    let focusable = popup.querySelectorAll('button, input');
+    trapFocus(e, popup, focusable);
+  })
+});
+
+elements.canvas.addEventListener('keydown', (e) => {
+  let focusable = elements.canvas.querySelectorAll('button, [href]');
+  trapFocus(e, elements.canvas, focusable);
+});

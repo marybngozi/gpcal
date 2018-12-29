@@ -9,10 +9,11 @@
     <title>GCal</title>
 </head>
 <body>
+    <div id="overlay"></div>
     <header>
         <nav>
            <div id="menu-icon">
-               <button class="menu-icon"><img src="./images/menu.svg" alt="open menu" srcset=""></button>
+               <button class="menu-icon"><img src="./images/menu.svg" alt="open menu" width="28" height="28"></button>
            </div> 
         </nav>
         <div id="gpa-display">
@@ -24,63 +25,70 @@
         <center><span id="notify"></span></center>
     </header>  
     <main>
+        
         <!-- MODE CHOOSER POPUP -->
-        <form id="mode-popup">
-            <button class="close-pop">x</button>
-            <h5>Calculate GP for</h5>
-            <p><label for="uni"><input type="radio" id="uni" name="mode" value="university">University</label></p>
-            <p><label for="poly"><input type="radio" id="poly" name="mode" value="polytechnic">Polytechnic</label></p><br>
-            <button type="submit" class="ip_btn" id="proceed-btn">Proceed</button>
-        </form>
+        <dialog id="mode-popup">
+            <button class="close-pop">&times;</button>
+            <form>
+                <h5>Calculate GP for</h5>
+                <ul>
+                    <li><label for="uni"><input type="radio" id="uni" name="mode" value="university">University</label></li>
+                    <li><label for="poly"><input type="radio" id="poly" name="mode" value="polytechnic">Polytechnic</label></li><br>
+                </ul>
+                <button type="submit" class="ip_btn" id="proceed-btn">Proceed</button>
+            </form>
+        </dialog>
 
         <!-- SAVE POPUP -->
-        <form id="save-popup">
-            <button class="close-pop">x</button>
-            <div id="input-group">
-                <input type="text" placeholder="Edit GP name" id="gpName" required>
-                <img src="./images/fountain-pen-close-up.svg" alt="Edit GP name">
-            </div>
-            
-            <p>This GPA will be temporally saved</p>
-            <input type="submit" class="ip_btn" id="save-btn" value="Save">
-        </form>
+        <dialog id="save-popup">
+            <button class="close-pop">&times;</button>
+            <form>
+                <div id="input-group">
+                    <input type="text" placeholder="Edit GP name" id="gpName" required>
+                    <img src="./images/fountain-pen-close-up.svg" alt="Edit GP name">
+                </div>
+                
+                <p>This GPA will be temporally saved</p>
+                <input type="submit" class="ip_btn" id="save-btn" value="Save">
+            </form>
+        </dialog>   
 
         <!-- UPDATE POPUP -->
-        <form id="update-popup">
-            <button class="close-pop">x</button>
-            <div id="input-group">
-                <input type="text" placeholder="Edit GP name" id="gpEditName" required>
-                <img src="./images/fountain-pen-close-up.svg" alt="Edit GP name">
-            </div>
-            
-            <p>This GPA is temporally saved</p>
-            <input type="submit" class="ip_btn" id="update-btn" value="Update">  
-        </form>
+        <dialog  id="update-popup">
+            <button class="close-pop">&times;</button>
+            <form>
+                <div id="input-group">
+                    <input type="text" placeholder="Edit GP name" id="gpEditName" required>
+                    <img src="./images/fountain-pen-close-up.svg" alt="Edit GP name">
+                </div>
+                
+                <p>This GPA is temporally saved</p>
+                <input type="submit" class="ip_btn" id="update-btn" value="Update">  
+            </form>
+        </dialog>
 
         <!-- OFF CANVAS SECTION -->
         <section id="off-canvas">
-            <button id="close-menu" class="menu-icon"><img src="./images/menu.svg" alt="close-menu" srcset=""></button>
+            <button id="close-menu" class="menu-icon"><img src="./images/cancel.svg" alt="close-menu" width="28" height="28"></button>
             <div id="logo-part">
                 <img src="./images/Logo.svg" alt="">
             </div>
             <div id="menu-list-container">
                 <ul>
-                    <li id="showSavedGpBtn"><img src="./images/Group.svg" alt="my GPAs"><span class="span"> My GPAs</span></li>
-                    <li id="showCalcArea"><img src="./images/Group.svg" alt="my GPAs"><span class="span"> Calculate GP</span></li>
-                    <li id="about_btn"><img src="./images/question.svg" alt="about GCal"><span class="span"> About GCAL</span></li>
-                    <li id="not-available"><img src="./images/download.svg" alt="download GCal"><span> Download GCAL<sub>Pro</sub></span></li>
+                    <li id="showSavedGpBtn"><button><img src="./images/Group.svg" alt="my GPAs"><span class="span"> My GPAs</span></button></li>
+                    <li id="showCalcArea"><button><img src="./images/calculator.svg" width="25" height="25" alt="my GPAs"><span class="span"> Calculate GP</span></button></li>
+                    <li id="about_btn"><button><img src="./images/question.svg" alt="about GCal"><span class="span"> About GCAL</span></button></li>
+                    <li id="not-available"><button><img src="./images/download.svg" alt="download GCal"><span> Download GCAL<sub>Pro</sub></span></button></li>
                 </ul>
             </div>
-            <div id="off-canvas-footer">
-                &copy; Swisel Enterprise 2018
-            </div>
+            <div id="off-canvas-footer"></div>
         </section>
 
         <!-- FRONT PAGE SECTION -->
         <section id="no-gp-yet">
             <div>
-                <img src="./images/undraw_no_data_qbuo.svg" alt="" srcset="">
-                <p id="frontP">You've not calculated any GP yet :-(</p>
+                <img src="./images/undraw_no_data_qbuo.svg" alt="no gp yet">
+                <p id="frontP">You've not calculated any GP yet</p>
                 <button id="showCalcAreaBtn">Calculate my GPA</button>
             </div>
             <div class="addField-container">
@@ -151,13 +159,18 @@
                     <input type="text" placeholder="Course Code" class="courseCode">
                     <input type="number" min="0" placeholder="Credit Unit" class="creditUnit">
                     <select name="grade" class="grade">
-                      <option value="-1">Grade</option>
-                      <option value="A">A</option>
-                      <option value="AB">AB</option>
-                      <option value="B">B</option>
-                      <option value="BC">BC</option>
-                      <option value="C">C</option>
-                      <option value="E">E</option>
+                        <option value="-1">Grade</option>
+                        <option value="A">A</option>
+                        <option value="AB">AB</option>
+                        <option value="B">B</option>
+                        <option value="BC">BC</option>
+                        <option value="C">C</option>
+                        <option value="CD">CD</option>
+                        <option value="D">D</option>
+                        <option value="P">P</option>
+                        <option value="F3">F3</option>
+                        <option value="F2">F2</option>
+                        <option value="F0">F0</option>
                     </select>
                     <button>remove</button>
                 </li>
@@ -165,13 +178,18 @@
                     <input type="text" placeholder="Course Code" class="courseCode">
                     <input type="number" min="0" placeholder="Credit Unit" class="creditUnit">
                     <select name="grade" class="grade">
-                      <option value="-1">Grade</option>
-                      <option value="A">A</option>
-                      <option value="AB">AB</option>
-                      <option value="B">B</option>
-                      <option value="BC">BC</option>
-                      <option value="C">C</option>
-                      <option value="E">E</option>
+                        <option value="-1">Grade</option>
+                        <option value="A">A</option>
+                        <option value="AB">AB</option>
+                        <option value="B">B</option>
+                        <option value="BC">BC</option>
+                        <option value="C">C</option>
+                        <option value="CD">CD</option>
+                        <option value="D">D</option>
+                        <option value="P">P</option>
+                        <option value="F3">F3</option>
+                        <option value="F2">F2</option>
+                        <option value="F0">F0</option>
                     </select>
                     <button>remove</button>
                 </li>
@@ -179,13 +197,18 @@
                     <input type="text" placeholder="Course Code" class="courseCode">
                     <input type="number" min="0" placeholder="Credit Unit" class="creditUnit">
                     <select name="grade" class="grade">
-                      <option value="-1">Grade</option>
-                      <option value="A">A</option>
-                      <option value="AB">AB</option>
-                      <option value="B">B</option>
-                      <option value="BC">BC</option>
-                      <option value="C">C</option>
-                      <option value="E">E</option>
+                        <option value="-1">Grade</option>
+                        <option value="A">A</option>
+                        <option value="AB">AB</option>
+                        <option value="B">B</option>
+                        <option value="BC">BC</option>
+                        <option value="C">C</option>
+                        <option value="CD">CD</option>
+                        <option value="D">D</option>
+                        <option value="P">P</option>
+                        <option value="F3">F3</option>
+                        <option value="F2">F2</option>
+                        <option value="F0">F0</option>
                     </select>
                     <button>remove</button>
                 </li>
@@ -231,31 +254,17 @@
         <!-- ABOUT SECTION -->
         <section id="about">
             <div id="abt_gcal">
-                <h5><img src="./images/Logo_color.svg" width="50" height="50" alt="Gcal logo">&nbsp;&nbsp;About GCal</h5>
-                <p>Lorem ipsum dolor sit amet,sed diam nonumy eirmod tempor invidunt ut 
-                    labore et dolore magna aliquyam erat,  At vero eos et accusam et 
-                    justo duo dolores et ea rebum.  Lorem ipsum dolor sit amet,  
-                    no sea takimata sanctus est Lorem ipsum dolor sit amet.  
-                    Stet clita kasd gubergren,  no sea takimata sanctus est 
-                    Lorem ipsum dolor sit amet.  no sea takimata sanctus est 
-                    Lorem ipsum dolor sit amet.  no sea takimata sanctus est 
-                    Lorem ipsum dolor sit amet.  sed diam voluptua.  
-
+                <h5><img src="./images/Logo_color.svg" width="50" height="50" alt="Gcal logo">&nbsp;&nbsp;&nbsp;&nbsp;GCALlite v1.0.0</h5>
+                <p>
+                    An intuitive and simplistic grade point average calculator.  
+                    Redesigned from the ground up with a beautiful and user-friendly interface.<br>
+                    
+                    GCALpro a more robust platform is in the pipeline. 
                 </p>
             </div>
-            <div id="abt_swisel">
-                <h5><img src="./images/swisel.png" width="50" height="50" alt="swisel logo">&nbsp;&nbsp;&nbsp;About Swisel</h5>
-                <p>Lorem ipsum dolor sit amet,sed diam nonumy eirmod tempor invidunt ut 
-                    labore et dolore magna aliquyam erat,  At vero eos et accusam et 
-                    justo duo dolores et ea rebum.  Lorem ipsum dolor sit amet,  
-                    no sea takimata sanctus est Lorem ipsum dolor sit amet.  
-                    Stet clita kasd gubergren,  no sea takimata sanctus est 
-                    Lorem ipsum dolor sit amet.  no sea takimata sanctus est 
-                    Lorem ipsum dolor sit amet.  no sea takimata sanctus est 
-                    Lorem ipsum dolor sit amet.  sed diam voluptua.  
-
-                </p>
-            </div>
+            <a id="abt_swisel" href="https://swisel.co">
+                <img src="./images/swisel.png" width="50" height="50" alt="swisel logo">&nbsp;&nbsp;&nbsp;&copy;Swisel Enterprise 2018
+            </a>
         </section>
     </main>  
     <script src="./scripts/models/uuid.js"></script>

@@ -1,8 +1,11 @@
 export const elements = {
+  body: document.querySelector('body'),
   menu: document.querySelectorAll('.menu-icon'),
   notify: document.querySelector('#notify'),
   canvas: document.querySelector('#off-canvas'),
+  canvasFooter: document.querySelector('#off-canvas-footer'),
   noGpView: document.querySelector('#no-gp-yet'),
+  noGpViewImg: document.querySelector('#no-gp-yet div img'),
   noGpViewP: document.querySelector('#no-gp-yet div p'),
   modePop: document.querySelector('#mode-popup'),
   proceedBtn: document.querySelector('#proceed-btn'),
@@ -39,5 +42,8 @@ export const elements = {
   gpCalcUlPoly: document.querySelector('#gpCalcUlPoly'),
   footerDiv: document.querySelectorAll('.addField-container'),
   aboutSec: document.querySelector('#about'),
-  aboutBtn: document.querySelector('#about_btn')
+  aboutBtn: document.querySelector('#about_btn'),
+  overlay: document.querySelector('#overlay'),
+  closeMenu: document.querySelector('#close-menu'),
+  allPopups: document.querySelectorAll('#save-popup, #update-popup, #mode-popup')
 }
