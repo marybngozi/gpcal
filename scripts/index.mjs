@@ -9,7 +9,7 @@ if(getGpa().length > 0) {;
 }
 
 const footerP = `
-  <a href="https://swisel.co">&copy; Swisel ${new Date().getFullYear()}</a>
+  <a href="http://swisel.co">&copy; Swisel ${new Date().getFullYear()}</a>
 `;
 elements.canvasFooter.insertAdjacentHTML('beforeend', footerP);
 elements.footerDiv.forEach(footDiv => {footDiv.insertAdjacentHTML('beforeend', footerP)});
