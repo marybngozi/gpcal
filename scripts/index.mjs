@@ -3,7 +3,7 @@ import { elements } from './models/base.mjs';
 import { productCredUnitGrade, getGpa } from "./models/calcGp.mjs";
 
 if(getGpa().length > 0) {;
-  elements.noGpViewImg.src = "/images/savedGp.svg";
+  elements.noGpViewImg.src = "./images/savedGp.svg";
   elements.noGpViewP.innerHTML = "Some GPAs Calculated";
   elements.showCalcAreaBtn.innerHTML = "Calculate more GPAs";
 }
