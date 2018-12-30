@@ -32,8 +32,18 @@
             <form>
                 <h5>Calculate GP for</h5>
                 <ul>
-                    <li><label for="uni"><input type="radio" id="uni" name="mode" value="university">University</label></li>
-                    <li><label for="poly"><input type="radio" id="poly" name="mode" value="polytechnic">Polytechnic</label></li><br>
+                    <li>
+                        <label for="uni" class="container">
+                            <input type="radio" id="uni" name="mode" value="university">University
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label for="poly" class="container">
+                            <input type="radio" id="poly" name="mode" value="polytechnic">Polytechnic
+                            <span class="checkmark"></span>
+                        </label>
+                    </li><br>
                 </ul>
                 <button type="submit" class="ip_btn" id="proceed-btn">Proceed</button>
             </form>

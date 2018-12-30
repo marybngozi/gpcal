@@ -331,11 +331,19 @@ elements.overlay.addEventListener('click', () => {
   removePopCanvasEffect();
 })
 
-elements.allPopups.forEach(popup => {
-  popup.addEventListener('keydown', (e) => {
-    let focusable = popup.querySelectorAll('button, input');
-    trapFocus(e, popup, focusable);
-  })
+elements.modePop.addEventListener('keydown', (e) => {
+  let focusable = elements.modePop.querySelectorAll('button, input');
+  trapFocus(e, elements.modePop, focusable);
+});
+
+elements.savePopup.addEventListener('keydown', (e) => {
+  let focusable = elements.savePopup.querySelectorAll('button, input');
+  trapFocus(e, elements.savePopup, focusable);
+});
+
+elements.updatePopup.addEventListener('keydown', (e) => {
+  let focusable = elements.updatePopup.querySelectorAll('button, input');
+  trapFocus(e, elements.updatePopup, focusable);
 });
 
 elements.canvas.addEventListener('keydown', (e) => {

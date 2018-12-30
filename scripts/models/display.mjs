@@ -271,7 +271,9 @@ export const trapFocus = (e, popup, focusList) => {
     if (e.target === firstFocus) {
       lastFocus.focus();
       e.preventDefault();
-    }else  if (e.target === lastFocus) {
+    }
+  }else  if (e.which === 9) {
+    if (e.target === lastFocus) {
       firstFocus.focus();
       e.preventDefault();
     }
