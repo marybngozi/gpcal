@@ -19,6 +19,19 @@ button{
   border-radius: 5px;
   color: #fff;
 }
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
 .menu-icon{
   width: 29px;
   height: 29px;
@@ -74,15 +87,72 @@ header #gpa-display {
   width: 70px;
   height: 70px;
 }
-.addField-container p {
+.addField-container a {
+  text-decoration: none;
   position: absolute;
   right: 5px;
   bottom: 2px;
+  padding-right: 2%;
   color: #aaa;
   font-size: 88%;
 }
-.addField-container p #swisel_logo{
-  margin-bottom: 0;
+
+/* ==================== CUSTOM RADIO BTN ============== */
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #437f88;
+}
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
 }
 
 /*=================== OFF CANVAS =====================*/
@@ -120,7 +190,12 @@ header #gpa-display {
   padding: 3% 2%;
   cursor: pointer;
 }
-#off-canvas #menu-list-container ul li#not-available{
+#off-canvas #menu-list-container ul li button{
+  width: 100%;
+  text-align: left;
+  font-size: 87%;
+}
+#off-canvas #menu-list-container ul li#not-available button{
   color: #a7b8bf;
 }
 #off-canvas #menu-list-container ul li img{
@@ -138,14 +213,13 @@ header #gpa-display {
 #off-canvas #menu-list-container{
   padding: 3%;
 }
-#off-canvas #off-canvas-footer{
+#off-canvas #off-canvas-footer a{
   padding: 4%;
   position: absolute;
   bottom: 0;
+  color: inherit;
+  text-decoration: none;
   font-size: 80%;
-}
-#off-canvas #off-canvas-footer span{
-  color: rgb(114, 3, 3);
 }
 
 /*===================== SECTION FRONT PAGE ========================*/
@@ -157,11 +231,14 @@ header #gpa-display {
 }
 #no-gp-yet div img{
   margin-bottom: 13px;
+  width: 106px;
+  height: 100px;
 }
 #no-gp-yet div #frontP{
   padding: 15px;
 }
 #no-gp-yet div button{
+  margin-bottom: 15%;
   width: 80%;
   padding: 3%;
 }
@@ -225,10 +302,10 @@ header #gpa-display {
   width: 69%;
   background: #fff;
   border: 1px solid #437f88;
-  position: absolute;
-  top: 50%;
-  left: 15%;;
-  z-index: 1000;
+  position: fixed;
+  top: 27%;
+  left: 11%;;
+  z-index: 100;
   padding: 1% 4% 4% 4%;
   box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.32);
   border-radius: 4px;
@@ -259,10 +336,11 @@ header #gpa-display {
   padding: 1%;
   height: 36px;
   width: 36px;
-  left: 89%;
+  left: 88%;
 }
-#mode-popup p label{
-  margin: 5px 15px; 
+#mode-popup ul li{
+  list-style: none;
+  margin: 8px 15px; 
   font-size: 95%;
   padding: 1%;
 }
@@ -378,4 +456,30 @@ header #gpa-display {
   padding: 2%;
   font-size: 70%;
   color: rgb(114, 3, 3);
+}
+
+/* ================= ABOUT SECTION ================== */
+#about {
+  display: none;
+  padding: 3%;
+
+}
+#about div h5{
+  text-align: center;
+  font-size: 92%;
+  color: #437f88;
+}
+#about div p{
+  font-size: 85%;
+  line-height: 28px;
+  letter-spacing: 1px;
+
+}
+#about #abt_gcal {
+  margin-bottom: 12%;
+}
+#about #abt_swisel {
+  margin-bottom: 2%;
+  text-decoration: none;
+  color: inherit;
 }

@@ -60,7 +60,12 @@ const addEditGpFieldPoly = (gpResult) => {
       <option value="B">B</option>
       <option value="BC">BC</option>
       <option value="C">C</option>
-      <option value="E">E</option>
+      <option value="CD">CD</option>
+      <option value="D">D</option>
+      <option value="P">P</option>
+      <option value="F3">F3</option>
+      <option value="F2">F2</option>
+      <option value="F0">F0</option>
     </select>
     <button>remove</button>
     
@@ -101,10 +106,14 @@ export const createGpFieldPoly = () => {
         <option value="B">B</option>
         <option value="BC">BC</option>
         <option value="C">C</option>
-        <option value="E">E</option>
+        <option value="CD">CD</option>
+        <option value="D">D</option>
+        <option value="P">P</option>
+        <option value="F3">F3</option>
+        <option value="F2">F2</option>
+        <option value="F0">F0</option>
       </select>
       <button>remove</button>
-      
     </li>
   `;
 }
@@ -148,65 +157,60 @@ export const showCalcArea = (mode) => {
 export const showModePop = () => {
   elements.modePop.style.display = "block";
   elements.gpNameInput.focus();
-  // get overlay for the back
-  // trap focus in the popup
-  // fix focus in input
 }
 
 export const showSavePop = () => {
   elements.savePopup.style.display = 'block';
   elements.gpNameInput.focus();
-  // get overlay for the back
-  // trap focus in the popup
-  // fix focus in input
 }
 
 export const showUpdatePop = () => {
   elements.updatePopup.style.display = "block";
   elements.gpEditNameInput.value = elements.gpDisplayP.innerHTML;
   elements.gpEditNameInput.focus();
-  //add the overlays
 }
 
 export const showSavedGp = () => {
   sectionSwitch();
   elements.showSavedGp.style.display = "block";
   elements.gpShowUl.innerHTML = "";
-  elements.canvas.classList.toggle('open');
+  elements.canvas.classList.remove('open');
+  removePopCanvasEffect();
   elements.gpDisplay.style.display = "none";
-  elements.gpDisplayP.innerHTML = "My GPAs"
-  elements.searchInput.focus();
-  getGpa().forEach(gpa => {
-    addSavedGpField(gpa)
-  });
+  elements.gpDisplayP.innerHTML = "My GPAs";
+  if (getGpa().length > 0) {
+    getGpa().forEach(gpa => {
+      addSavedGpField(gpa);
+    });
+  }else{
+    let p = `
+    <p style="text-align: center">No GPA saved yet!</p>
+    `;
+    elements.gpShowUl.insertAdjacentHTML('beforeend', p);
+  }
+  
 }
 
-export const showEditGp = (gpaId, mode) => {
+export const showEditGp = (gpaId) => {
   sectionSwitch();
-  if (mode === "university") {
-    elements.editAreaUni.style.display = 'block';
-    elements.gpEditUlUni.innerHTML = "";
+  let gpaInfo = getGpa().find(gpa => gpa.id === gpaId);
+  if (gpaInfo) {
+    elements.gpDisplayP.innerHTML = gpaInfo.name;
+    elements.gpDisplayInput.value = gpaInfo.id;
+    elements.gpDisplayMode.value = gpaInfo.mode;
+    elements.gpDisplay.innerHTML = gpaInfo.gpa;
     elements.gpDisplay.style.display = "block";
-    let gpaInfo = getGpa().find(gpa => gpa.id === gpaId);
-    if (gpaInfo) {
-      elements.gpDisplayP.innerHTML = gpaInfo.name;
-      elements.gpDisplayInput.value = gpaInfo.id
-      elements.gpDisplay.innerHTML = gpaInfo.gpa;
+    if (gpaInfo.mode === "university") {
+      elements.editAreaUni.style.display = 'block';
+      elements.gpEditUlUni.innerHTML = "";
       if (gpaInfo.results.length > 0) {
         gpaInfo.results.forEach(gpResult => {
           addEditGpFieldUni(gpResult);
         })  
       }
-    }
-  }else if (mode === "polytechnic") {
-    elements.editAreaPoly.style.display = 'block';
-    elements.gpEditUlPoly.innerHTML = "";
-    elements.gpDisplay.style.display = "block";
-    let gpaInfo = getGpa().find(gpa => gpa.id === gpaId);
-    if (gpaInfo) {
-      elements.gpDisplayP.innerHTML = gpaInfo.name;
-      elements.gpDisplayInput.value = gpaInfo.id
-      elements.gpDisplay.innerHTML = gpaInfo.gpa;
+    }else if (gpaInfo.mode === "polytechnic") {
+      elements.editAreaPoly.style.display = 'block';
+      elements.gpEditUlPoly.innerHTML = "";
       if (gpaInfo.results.length > 0) {
         gpaInfo.results.forEach(gpResult => {
           addEditGpFieldPoly(gpResult);
@@ -216,12 +220,23 @@ export const showEditGp = (gpaId, mode) => {
   }
 }
 
+export const showAbout = () => {
+  sectionSwitch();
+  elements.aboutSec.style.display = "block";
+  elements.canvas.classList.remove('open');
+  removePopCanvasEffect();
+}
+
 export const saveGp = (gpObj) => {
   elements.savePopup.style.display = 'none';
+  removePopCanvasEffect();
   add2gpArr(gpObj);
   elements.gpNameInput.value = "";
   elements.notify.style.display = "block";
   elements.notify.innerHTML = "Saved!";
+  document.querySelectorAll('#calcAreaUni input, #calcAreaPoly input').forEach(input => {
+    input.value = "";
+  })
   setTimeout(() => {
     elements.notify.innerHTML = "";
   }, 2000);
@@ -241,5 +256,34 @@ export const updateGp = (updateObj) => {
   updateGpa(updateObj);
   elements.updatePopup.style.display = "none";
   showSavedGp();
-  elements.canvas.classList.toggle('open');
+  elements.canvas.classList.remove('open');
+  removePopCanvasEffect();
+}
+
+export const trapFocus = (e, popup, focusList) => {
+  let firstFocus = focusList[0];
+  let lastFocus = focusList[focusList.length - 1];
+  if (e.which === 27) {
+    lastFocus.focus();
+    popup.style.display = "none";
+    removePopCanvasEffect();
+  }else if (e.which === 9 && e.shiftKey) {
+    if (e.target === firstFocus) {
+      lastFocus.focus();
+      e.preventDefault();
+    }
+  }else  if (e.which === 9) {
+    if (e.target === lastFocus) {
+      firstFocus.focus();
+      e.preventDefault();
+    }
+  }
+}
+
+export const createPopCanvasEffect = () => {
+  elements.overlay.style.display = 'block';
+}
+
+export const removePopCanvasEffect = () => {
+  elements.overlay.style.display = 'none';
 }

@@ -35,15 +35,30 @@ const matchGradeScorePoly = (grade) => {
       score = 3.5;
       break;
     case "B":
-      score = 3;
+      score = 3.25;
       break;
     case "BC":
-      score = 2.5;
+      score = 3;
       break;
     case "C":
+      score = 2.75;
+      break;
+    case "CD":
+      score = 2.5;
+      break;
+    case "D":
+      score = 2.25;
+      break;
+    case "P":
       score = 2;
       break;
-    case "E":
+    case "F3":
+      score = 1.5;
+      break;
+    case "F2":
+      score = 1;
+      break;
+    case "F0":
       score = 0;
       break;
   }
@@ -91,6 +106,7 @@ export const add2gpArr = (gpObj) => {
   gpArr.push({
     id: uuidv4(),
     name: gpObj.name,
+    mode: gpObj.mode,
     gpa: gpObj.gpa,
     results: gpObj.results
   });
