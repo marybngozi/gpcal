@@ -3,17 +3,17 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.helloworld"
+        id        = "com.phonegap.gpcal"
         version   = "1.0.0">
 
-    <name>Hello World</name>
+    <name>Gcal</name>
 
     <description>
-        Hello World sample application that responds to the deviceready event.
+        A grade calculator for students in higher institutions in Nigeria .
     </description>
 
-    <author href="http://phonegap.com" email="support@phonegap.com">
-        PhoneGap Team
+    <author href="http://swisel.co" email="">
+        Swisel Enterprise 
     </author>
 
     <!--
@@ -87,6 +87,7 @@
     <icon src="res/icon/windows-phone/icon-173.png" gap:platform="winphone"   gap:role="background" />
 
     <!-- Define app splash screen for each platform. -->
+        <!--
     <gap:splash src="res/screen/android/screen-ldpi-portrait.png"       gap:platform="android" gap:qualifier="port-ldpi" />
     <gap:splash src="res/screen/android/screen-mdpi-portrait.png"       gap:platform="android" gap:qualifier="port-mdpi" />
     <gap:splash src="res/screen/android/screen-hdpi-portrait.png"       gap:platform="android" gap:qualifier="port-hdpi" />
@@ -102,6 +103,7 @@
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
     <string>100</string>
     </gap:config-file>
+     -->
 
     <!--
         Define access to external domains.
