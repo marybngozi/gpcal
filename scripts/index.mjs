@@ -323,12 +323,11 @@ elements.updateGp.addEventListener('click', popUpdater);
 
 elements.aboutBtn.addEventListener('click', showAbout);
 
-elements.overlay.addEventListener('click', () => {
-  elements.savePopup.style.display = 'none';
-  elements.updatePopup.style.display = 'none';
-  elements.modePop.style.display = 'none';
-  elements.canvas.classList.remove('open');
-  removePopCanvasEffect();
+elements.overlay.addEventListener('click', (e) => {
+  if (elements.canvas.classList.contains('open')) {
+    elements.canvas.classList.remove('open');
+    removePopCanvasEffect();
+  }
 })
 
 elements.modePop.addEventListener('keydown', (e) => {

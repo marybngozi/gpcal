@@ -8,7 +8,7 @@
 }
 html{
   height: auto;
-  font-size: 20px;
+  font-size: 25px;
   font-family: 'raleway';
   color: #4f4f4f;
 }
@@ -33,11 +33,12 @@ button{
   cursor: pointer; /* Add a pointer on hover */
 }
 .menu-icon img{
-  width: 30px;
-  height: 30px;
+  width: 44px;
+  height: 44px;
 }
 input{
   border: 0;
+  font-size: 77%;
   color: #437f88;
   background: #FAFAFA;
 }
@@ -64,6 +65,7 @@ header nav #menu-icon button {
 header #gpa-display {
   text-align: center;
   color: #fff;
+  margin-bottom: 20px;
 }
 #notify{
   color: rgb(214, 228, 235);
@@ -73,19 +75,19 @@ header #gpa-display {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 50px;
+  height: 70px;
   background: #4a6f7c;
 }
 .addField-container button{ 
   position: absolute;
   left: 39%;
-  bottom: 2px;
+  bottom: -5px;
   cursor: pointer;
   background: transparent;
 }
 .addField-container button img{ 
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
 }
 .addField-container a {
   text-decoration: none;
@@ -157,7 +159,7 @@ header #gpa-display {
 
 /*=================== OFF CANVAS =====================*/
 #off-canvas{
-  width: 270px;
+  width: 400px;
   color: #fff;
   position: fixed;
   top: 0;
@@ -166,8 +168,8 @@ header #gpa-display {
   opacity: 0.95;
   height: 100%;
   z-index: 10;
-  -webkit-transform: translate(-270px, 0);
-  transform: translate(-270px, 0);
+  -webkit-transform: translate(-400px, 0);
+  transform: translate(-400px, 0);
   transition: transform 0.3s ease;
 }
 #off-canvas.open {
@@ -241,7 +243,7 @@ header #gpa-display {
   margin-bottom: 15%;
   width: 80%;
   padding: 3%;
-  font-size: 84%;
+  font-size: 88%;
 }
 
 /*====================CALC AREA ==============*/
@@ -289,8 +291,9 @@ header #gpa-display {
   color: rgb(114, 3, 3);
 }
 .saveGpBtn, .updateGpBtn{
-  width: 80%;
+  width: 60%;
   padding: 3%;
+  font-size: 88%;
   margin-top: 10px;
   margin-bottom: 28%;
 }
@@ -324,7 +327,8 @@ header #gpa-display {
   width: auto;
   color: #4a6f7c;
   position: relative;
-  left: 74%;
+  left: 78%;
+  font-size: 82%;
   font-weight: bold;
 }
 #save-popup .close-pop, #update-popup .close-pop, #mode-popup .close-pop{
@@ -336,7 +340,7 @@ header #gpa-display {
   font-weight: bold;
   padding: 2%;
   top: 2%;
-  left: 89%;
+  left: 92%;
 }
 #save-popup .close-pop img, #update-popup .close-pop img, #mode-popup .close-pop img{
   height: 28px;
@@ -358,7 +362,7 @@ header #gpa-display {
   position: fixed;
   top: 260px;
   left: 3%;
-  padding: 4%;
+  padding: 3%;
   width: 85%;
   margin: 0 auto;
   background: #FAFAFA;
@@ -373,12 +377,11 @@ header #gpa-display {
   
 }
 #show-saved-gp #saved-gp{
-  margin: 90px 0;
+  margin: 130px 0;
 }
 #show-saved-gp #saved-gp ul li{
   width: 98%;
   height: 48px;
-  padding-left: 0;
   margin: 0 1%;
   margin-bottom: 4%;
   background: #FBFBFB;
@@ -386,7 +389,7 @@ header #gpa-display {
   border-radius: 0px 4px 4px 0px;
   display: flex;
   justify-content: space-between;
-
+  padding: 2% 0;
 }
 #show-saved-gp #saved-gp ul li .edit-gpa{
   width: auto;
@@ -405,7 +408,7 @@ header #gpa-display {
   color: rgb(114, 3, 3);
 }
 #show-saved-gp #saved-gp ul li .gp-name{
-  width: 127px;
+  width: 157px;
   margin-left: 5%;
   padding-top: 4%;
   font-size: 70%;
@@ -424,7 +427,6 @@ header #gpa-display {
 #editAreaUni ul li, #editAreaPoly ul li{
   width: 98%;
   height: 48px;
-  padding-left: 0;
   margin: 0 1%;
   margin-bottom: 4%;
   background: #FBFBFB;
@@ -432,6 +434,7 @@ header #gpa-display {
   border-radius: 0px 4px 4px 0px;
   display: flex;
   justify-content: space-between;
+  padding: 2% 0;
 
 }
 #editAreaUni ul li input, #editAreaPoly ul li input{
@@ -486,11 +489,4 @@ header #gpa-display {
   margin-bottom: 2%;
   text-decoration: none;
   color: inherit;
-}
-
-
-
-/* ========================== MEDIA QUERIES ===================  */
-@media screen and (max-width:500px) {
-  
 }

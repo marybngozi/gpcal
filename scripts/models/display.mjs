@@ -223,6 +223,9 @@ export const showEditGp = (gpaId) => {
 export const showAbout = () => {
   sectionSwitch();
   elements.aboutSec.style.display = "block";
+  elements.gpDisplayP.innerHTML = `<img src="./images/Logo.svg" width="50" height="50">`;
+  elements.gpDisplay.innerHTML = 'GCal';
+  elements.gpDisplay.style.display = "block";
   elements.canvas.classList.remove('open');
   removePopCanvasEffect();
 }

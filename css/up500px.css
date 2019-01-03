@@ -8,7 +8,7 @@
 }
 html{
   height: auto;
-  font-size: 20px;
+  font-size: 22px;
   font-family: 'raleway';
   color: #4f4f4f;
 }
@@ -33,8 +33,8 @@ button{
   cursor: pointer; /* Add a pointer on hover */
 }
 .menu-icon img{
-  width: 30px;
-  height: 30px;
+  width: 38px;
+  height: 38px;
 }
 input{
   border: 0;
@@ -79,13 +79,13 @@ header #gpa-display {
 .addField-container button{ 
   position: absolute;
   left: 39%;
-  bottom: 2px;
+  bottom: -12px;
   cursor: pointer;
   background: transparent;
 }
 .addField-container button img{ 
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
 }
 .addField-container a {
   text-decoration: none;
@@ -157,7 +157,7 @@ header #gpa-display {
 
 /*=================== OFF CANVAS =====================*/
 #off-canvas{
-  width: 270px;
+  width: 300px;
   color: #fff;
   position: fixed;
   top: 0;
@@ -166,8 +166,8 @@ header #gpa-display {
   opacity: 0.95;
   height: 100%;
   z-index: 10;
-  -webkit-transform: translate(-270px, 0);
-  transform: translate(-270px, 0);
+  -webkit-transform: translate(-300px, 0);
+  transform: translate(-300px, 0);
   transition: transform 0.3s ease;
 }
 #off-canvas.open {
@@ -241,7 +241,7 @@ header #gpa-display {
   margin-bottom: 15%;
   width: 80%;
   padding: 3%;
-  font-size: 84%;
+  font-size: 88%;
 }
 
 /*====================CALC AREA ==============*/
@@ -289,8 +289,9 @@ header #gpa-display {
   color: rgb(114, 3, 3);
 }
 .saveGpBtn, .updateGpBtn{
-  width: 80%;
+  width: 60%;
   padding: 3%;
+  font-size: 88%;
   margin-top: 10px;
   margin-bottom: 28%;
 }
@@ -324,7 +325,8 @@ header #gpa-display {
   width: auto;
   color: #4a6f7c;
   position: relative;
-  left: 74%;
+  left: 78%;
+  font-size: 82%;
   font-weight: bold;
 }
 #save-popup .close-pop, #update-popup .close-pop, #mode-popup .close-pop{
@@ -336,7 +338,7 @@ header #gpa-display {
   font-weight: bold;
   padding: 2%;
   top: 2%;
-  left: 89%;
+  left: 92%;
 }
 #save-popup .close-pop img, #update-popup .close-pop img, #mode-popup .close-pop img{
   height: 28px;
@@ -373,12 +375,11 @@ header #gpa-display {
   
 }
 #show-saved-gp #saved-gp{
-  margin: 90px 0;
+  margin: 110px 0;
 }
 #show-saved-gp #saved-gp ul li{
   width: 98%;
   height: 48px;
-  padding-left: 0;
   margin: 0 1%;
   margin-bottom: 4%;
   background: #FBFBFB;
@@ -386,7 +387,7 @@ header #gpa-display {
   border-radius: 0px 4px 4px 0px;
   display: flex;
   justify-content: space-between;
-
+  padding: 2% 0;
 }
 #show-saved-gp #saved-gp ul li .edit-gpa{
   width: auto;
@@ -424,7 +425,6 @@ header #gpa-display {
 #editAreaUni ul li, #editAreaPoly ul li{
   width: 98%;
   height: 48px;
-  padding-left: 0;
   margin: 0 1%;
   margin-bottom: 4%;
   background: #FBFBFB;
@@ -432,6 +432,7 @@ header #gpa-display {
   border-radius: 0px 4px 4px 0px;
   display: flex;
   justify-content: space-between;
+  padding: 2% 0;
 
 }
 #editAreaUni ul li input, #editAreaPoly ul li input{
