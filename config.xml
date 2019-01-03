@@ -3,17 +3,17 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.helloworld"
+        id        = "com.swisel.gpcal"
         version   = "1.0.0">
 
-    <name>Hello World</name>
+    <name>Gcal</name>
 
     <description>
-        Hello World sample application that responds to the deviceready event.
+        A grade calculator for students in higher institutions in Nigeria .
     </description>
 
-    <author href="http://phonegap.com" email="support@phonegap.com">
-        PhoneGap Team
+    <author href="http://swisel.co" email="">
+        Swisel Enterprise 
     </author>
 
     <!--
@@ -45,24 +45,26 @@
     <!-- Plugins -->
 
     <!-- Core plugins -->
-    <plugin name="cordova-plugin-battery-status" />
-    <plugin name="cordova-plugin-camera" />
-    <plugin name="cordova-plugin-media-capture" />
-    <plugin name="cordova-plugin-console" />
-    <plugin name="cordova-plugin-contacts" />
-    <plugin name="cordova-plugin-device" />
-    <plugin name="cordova-plugin-device-motion" />
-    <plugin name="cordova-plugin-device-orientation" />
-    <plugin name="cordova-plugin-dialogs" />
-    <plugin name="cordova-plugin-file" />
-    <plugin name="cordova-plugin-file-transfer" />
-    <plugin name="cordova-plugin-geolocation" />
-    <plugin name="cordova-plugin-globalization" />
-    <plugin name="cordova-plugin-inappbrowser" />
-    <plugin name="cordova-plugin-media" />
-    <plugin name="cordova-plugin-network-information" />
-    <plugin name="cordova-plugin-splashscreen" />
-    <plugin name="cordova-plugin-vibration" />
+    <plugin name="cordova-plugin-battery-status" spec="~2.0.2" />
+    <plugin name="cordova-plugin-camera" spec="~4.0.3" />
+    <plugin name="cordova-plugin-console" spec="~1.1.0" />
+    <plugin name="cordova-plugin-contacts" spec="~3.0.1" />
+    <plugin name="cordova-plugin-device" spec="~2.0.2" />
+    <plugin name="cordova-plugin-device-motion" spec="~2.0.1" />
+    <plugin name="cordova-plugin-device-orientation" spec="~2.0.1" />
+    <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
+    <plugin name="cordova-plugin-file" spec="~6.0.1" />
+    <plugin name="cordova-plugin-file-transfer" spec="~1.7.1" />
+    <plugin name="cordova-plugin-geolocation" spec="~4.0.1" />
+    <plugin name="cordova-plugin-globalization" spec="~1.11.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~3.0.0" />
+    <plugin name="cordova-plugin-media" spec="~5.0.2" />
+    <plugin name="cordova-plugin-media-capture" spec="~3.0.2" />
+    <plugin name="cordova-plugin-network-information" spec="~2.0.1" />
+    <plugin name="cordova-plugin-splashscreen" spec="~5.0.2" />
+    <plugin name="cordova-plugin-vibration" spec="~3.1.0" />
+    <plugin name="cordova-plugin-statusbar" spec="~2.4.2" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.3.3" />
 
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
@@ -71,6 +73,7 @@
     -->
 
     <!-- Define app icon for each platform. -->
+        <!--
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:qualifier="ldpi" />
     <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:qualifier="mdpi" />
@@ -86,7 +89,9 @@
     <icon src="res/icon/windows-phone/icon-48.png"  gap:platform="winphone" />
     <icon src="res/icon/windows-phone/icon-173.png" gap:platform="winphone"   gap:role="background" />
 
+      -->
     <!-- Define app splash screen for each platform. -->
+       <!-- 
     <gap:splash src="res/screen/android/screen-ldpi-portrait.png"       gap:platform="android" gap:qualifier="port-ldpi" />
     <gap:splash src="res/screen/android/screen-mdpi-portrait.png"       gap:platform="android" gap:qualifier="port-mdpi" />
     <gap:splash src="res/screen/android/screen-hdpi-portrait.png"       gap:platform="android" gap:qualifier="port-hdpi" />
@@ -102,6 +107,7 @@
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
     <string>100</string>
     </gap:config-file>
+     -->
 
     <!--
         Define access to external domains.
