@@ -98,27 +98,24 @@ header #gpa-display {
 }
 
 /* ==================== CUSTOM RADIO BTN ============== */
-/* The container */
 .container {
   display: block;
   position: relative;
   padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 100%;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
-/* Hide the browser's default radio button */
-.container input {
+.container input { /* Hide the browser's default radio button */
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
-/* Create a custom radio button */
-.checkmark {
+.checkmark { /* Create a custom radio button */
   position: absolute;
   top: 0;
   left: 0;
@@ -127,26 +124,21 @@ header #gpa-display {
   background-color: #eee;
   border-radius: 50%;
 }
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
+.container:hover input ~ .checkmark { /* On mouse-over, add a grey background color */
   background-color: #ccc;
 }
-/* When the radio button is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.container input:checked ~ .checkmark { /* When the radio button is checked, add a blue background */
   background-color: #437f88;
 }
-/* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark:after {
+.checkmark:after { /* Create the indicator (the dot/circle - hidden when not checked) */
   content: "";
   position: absolute;
   display: none;
 }
-/* Show the indicator (dot/circle) when checked */
-.container input:checked ~ .checkmark:after {
+.container input:checked ~ .checkmark:after { /* Show the indicator (dot/circle) when checked */
   display: block;
 }
-/* Style the indicator (dot/circle) */
-.container .checkmark:after {
+.container .checkmark:after { /* Style the indicator (dot/circle) */
  	top: 9px;
 	left: 9px;
 	width: 8px;
@@ -345,7 +337,6 @@ header #gpa-display {
 #mode-popup ul li{
   list-style: none;
   margin: 8px 15px; 
-  font-size: 95%;
   padding: 1%;
 }
 
@@ -378,7 +369,6 @@ header #gpa-display {
 #show-saved-gp #saved-gp ul li{
   width: 98%;
   height: 48px;
-  padding-left: 0;
   margin: 0 1%;
   margin-bottom: 4%;
   background: #FBFBFB;
@@ -386,6 +376,7 @@ header #gpa-display {
   border-radius: 0px 4px 4px 0px;
   display: flex;
   justify-content: space-between;
+  padding: 2% 0;
 
 }
 #show-saved-gp #saved-gp ul li .edit-gpa{
@@ -424,7 +415,6 @@ header #gpa-display {
 #editAreaUni ul li, #editAreaPoly ul li{
   width: 98%;
   height: 48px;
-  padding-left: 0;
   margin: 0 1%;
   margin-bottom: 4%;
   background: #FBFBFB;
@@ -432,7 +422,7 @@ header #gpa-display {
   border-radius: 0px 4px 4px 0px;
   display: flex;
   justify-content: space-between;
-
+  padding: 2% 0;
 }
 #editAreaUni ul li input, #editAreaPoly ul li input{
   background: #FBFBFB;
@@ -486,11 +476,4 @@ header #gpa-display {
   margin-bottom: 2%;
   text-decoration: none;
   color: inherit;
-}
-
-
-
-/* ========================== MEDIA QUERIES ===================  */
-@media screen and (max-width:500px) {
-  
 }
