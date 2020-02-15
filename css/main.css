@@ -12,6 +12,9 @@ html{
   font-family: 'raleway';
   color: #4f4f4f;
 }
+nav{
+  height: 49px;
+}
 button{
   background: #437f88;
   padding: 2%;
@@ -24,12 +27,12 @@ button{
   display: none; /* Hidden by default */
   width: 100%; /* Full width (cover the whole page) */
   height: 100%; /* Full height (cover the whole page) */
-  top: 0; 
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  z-index: 5; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
 }
 .menu-icon img{
@@ -52,7 +55,7 @@ header{
   background-image: linear-gradient(rgba(73, 111, 124, 0.7), rgba(73, 111, 124, 0.7)), url('../images/bg.jpg');
   background-size: cover;
   background-position: center;
-  height: 240px;
+  height: 160px
 }
 header nav #menu-icon{
   padding: 3%
@@ -73,28 +76,34 @@ header #gpa-display {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 50px;
+  height: 40px;
   background: #4a6f7c;
 }
-.addField-container button{ 
-  position: absolute;
-  left: 39%;
-  bottom: 2px;
-  cursor: pointer;
-  background: transparent;
-}
-.addField-container button img{ 
-  width: 70px;
-  height: 70px;
+#add-new-row {
+  display: none;
+  position: fixed;
+  right: 12px;
+  top: 139px;
+  z-index: 2;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  font-size: 29px;
+  border: 3px solid #437f88;
+  background: #fff;
+  color: #437f88;
+  text-align: center;
+  padding-top: 4px;
+  font-weight: 900;
 }
 .addField-container a {
   text-decoration: none;
   position: absolute;
   right: 5px;
   bottom: 2px;
-  padding-right: 2%;
-  color: #aaa;
-  font-size: 88%;
+  padding-right: 5px;
+  color: #fff;
+  font-size: 50%;
 }
 
 /* ==================== CUSTOM RADIO BTN ============== */
@@ -211,9 +220,12 @@ header #gpa-display {
   bottom: 0;
   color: inherit;
   text-decoration: none;
-  font-size: 80%;
+  font-size: 50%;
 }
-
+.close{
+  width: 15px !important;
+  height: 15px !important;
+}
 /*===================== SECTION FRONT PAGE ========================*/
 #no-gp-yet{
   margin: 30px 0;
@@ -287,7 +299,6 @@ header #gpa-display {
   margin-bottom: 28%;
 }
 
-
 /*============== POPUP MODAL FOR SAVE & UPDATE ==========**/
 #save-popup, #update-popup, #mode-popup{
   display: none;
@@ -336,7 +347,7 @@ header #gpa-display {
 }
 #mode-popup ul li{
   list-style: none;
-  margin: 8px 15px; 
+  margin: 8px 15px;
   padding: 1%;
 }
 
@@ -347,7 +358,7 @@ header #gpa-display {
 }
 #show-saved-gp #search-container{
   position: fixed;
-  top: 260px;
+  top: 172px;
   left: 3%;
   padding: 4%;
   width: 85%;
@@ -361,10 +372,10 @@ header #gpa-display {
 }
 #show-saved-gp #search-container img{
   display: inline-block;
-  
+
 }
 #show-saved-gp #saved-gp{
-  margin: 90px 0;
+  margin: 70px 0 20px;
 }
 #show-saved-gp #saved-gp ul li{
   width: 98%;
@@ -455,7 +466,7 @@ header #gpa-display {
 /* ================= ABOUT SECTION ================== */
 #about {
   display: none;
-  padding: 3%;
+  padding: 10%;
   color: darkslategrey;
 }
 #about div h5{
@@ -464,13 +475,19 @@ header #gpa-display {
   color: #437f88;
 }
 #about div p{
-  font-size: 85%;
-  line-height: 28px;
-  letter-spacing: 1px;
+  font-size: 65%;
+  line-height: 20px;
+  /* letter-spacing: 1px; */
 
+}
+#about div p a{
+  color: #2d7783;
 }
 #about #abt_gcal {
   margin-bottom: 12%;
+}
+#version{
+  font-size: 12px;
 }
 #about #abt_swisel {
   margin-bottom: 2%;
